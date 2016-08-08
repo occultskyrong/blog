@@ -8,10 +8,14 @@
 * 标签
 
 ## 风格的确认
-* 颜色的定义
-* 大小的定义
-* love(link、visited、hover、active)四态
-*
+* 状态-颜色(primary/success/danger/warning/info)
+* 规格-大小(width/height/padding/margin)
+* (:link、:focus、:visited、:hover、:active)五状态
+* font-size、line-heigth
+* border、border-radius
+* 字体(font-family)
+* sprite icon
+* 
 
 ## class定义和继承
 *
