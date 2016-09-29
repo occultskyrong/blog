@@ -3,6 +3,7 @@
 
 >> createdAt @ 2016年9月29日17:39:48
 >>> OS 名称:          Microsoft Windows 7 旗舰版 
+
 >>> OS 版本:          6.1.7601 Service Pack 1 Build 7601
 
 # 0. Installation
