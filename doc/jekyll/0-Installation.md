@@ -33,6 +33,7 @@
   
 - github：[rubygems/rubygems](https://github.com/rubygems/rubygems)
 - 当下版本
+
   ```
   $ gem -v
   >> 2.6.7
