@@ -19,8 +19,16 @@
 - 淘宝gem已不再维护，别用淘宝的gem镜像了，[Ruby China 的 RubyGems 镜像上线](https://ruby-china.org/topics/29250)
 - gem 国内镜像使用说明: [RubyGems 镜像- Ruby China](https://gems.ruby-china.org/)
   - 还有要注意以下：https可能不能用...
- 
+  
   > 如果遇到 SSL 证书问题，你又无法解决，请直接用 http://gems.ruby-china.org 避免 SSL 的问题。
+  
+  ```
+	gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/
+  ```
+  - 假如你想解决，查看
+    - [https://github.com/ruby-china/rubygems-mirror/issues/5](https://github.com/ruby-china/rubygems-mirror/issues/5)
+    - [https://ruby-china.org/topics/24840](https://ruby-china.org/topics/24840)
+  - 如果切换为http还不行，查看你的DNS，我切换DNS到8.8.8.8之后可以了
   
 - github：[rubygems/rubygems](https://github.com/rubygems/rubygems)
 - 当下版本
