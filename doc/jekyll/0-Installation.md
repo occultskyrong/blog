@@ -102,17 +102,19 @@ Configuration file: Z:/Jekyll/blog/_config.yml
 	at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
 	```
 	
-	- 看了一下，可能是我ruby版本太低 `ruby -v`
+	- ~~看了一下，可能是我ruby版本太低 `ruby -v`~~
 	  
 	```
 	ruby 2.0.0p451 (2014-02-24) [x64-mingw32]
 	```
-	- 更新一下ruby版本，去 [http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/) 下载一个最新的安装上.PS:先删除老版本，再安装新版本
+	- ~~更新一下ruby版本，去 [http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/) 下载一个最新的安装上.PS:先删除老版本，再安装新版本~~
 
 	```
 	ruby 2.3.1p112 (2016-04-26 revision 54768) [x64-mingw32]
 	```
-    - 需要把上边的重来一遍
+    - ~~需要把上边的重来一遍~~
+    - 查看[The 'json' native gem requires installed build tools](http://stackoverflow.com/questions/8100891/the-json-native-gem-requires-installed-build-tools)
+    	- [下载安装DevKit](http://rubyinstaller.org/downloads/archives)
  
 - 浏览器访问`http://localhost:4000`
 - 此时应为一片空白？我服
