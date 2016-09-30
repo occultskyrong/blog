@@ -17,6 +17,7 @@ var express = require('express')
 
 // 声明全局变量
 global.blog = require('./service/global');
+global.markdown = require('./service/markdown');
 
 // 配置
 var config = require('./config')();

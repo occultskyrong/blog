@@ -30,6 +30,15 @@ body {
 
 .app-context {
   margin-top: 51px;
+  .container {
+    h1 {
+      small {
+        margin-top: 15px;
+        float: right;
+        font-size: 18px;
+      }
+    }
+  }
 }
 
 //*-date的样式mixin

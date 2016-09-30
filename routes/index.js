@@ -30,8 +30,9 @@ router.use(function (req, res, next) {
     next();
 });
 
-router.use('/api', require('./api'));    // api请求
-router.use('/', require('./web'));       // web页面请求
+router.use('/api', require('./api'));       // api请求
+router.use('/docs', require('./docs'));     // docs文档请求
+router.use('/', require('./web'));          // web页面请求
 
 // 拦截所有错误请求
 //* 一般是路由里面发生错误的解析，可能导致系统崩溃

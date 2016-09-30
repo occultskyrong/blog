@@ -8,7 +8,7 @@
 * 人比较懒，更新不稳定，视个人兴趣和心情进行更新
 
 ## 网站
-> [sky91.cn](sky91.cn)
+> [sky91.cn](http://sky91.cn)
 
 ## 项目运行
 - git clone
@@ -23,15 +23,15 @@
 
 |开坑内容|文档类型|开坑状态|最后更新|
 |:--|--:|--:|--:|
-|[开源社区的建设、贡献与捐献](./doc/donate/readme.md)|document|1%|2016年9月29日|
-|[css组件化](./doc/css-component/readme.md)|sign|20%|2016年9月29日|
-|[购物车逻辑实现](./doc/cart/readme.md)|code|1%|2016年9月29日|
-|[聊天的简单实现](./doc/chat/readme.md)|code|1%|2016年9月29日|
-|[从0开始 - jekyll - Installation](./doc/jekyll/0-Installation.md)|Tutorial|80%|2016年9月29日|
+|[开源社区的建设、贡献与捐献](./public/docs/donate/readme.md)|document|1%|2016年9月29日|
+|[css组件化](./public/docs/css-component/readme.md)|sign|20%|2016年9月29日|
+|[购物车逻辑实现](./public/docs/cart/readme.md)|code|1%|2016年9月29日|
+|[聊天的简单实现](./public/docs/chat/readme.md)|code|1%|2016年9月29日|
+|[从0开始 - jekyll - Installation](./public/docs/jekyll/0-Installation.md)|Tutorial|80%|2016年9月29日|
 
 * 搬迁CSDN博客内容
 
 |搬迁自|搬迁后|更新日期|
 |:--|--:|--:|
-|[Bootstrap入门速成-效果概述](http://blog.csdn.net/occultskyrong/article/details/44966005)|[Bootstrap入门速成-效果概述](./doc/bootstrap/0-overview.md)|2016年9月29日|
+|[Bootstrap入门速成-效果概述](http://blog.csdn.net/occultskyrong/article/details/44966005)|[Bootstrap入门速成-效果概述](./public/docs/bootstrap/0-overview.md)|2016年9月29日|
  

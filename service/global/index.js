@@ -52,7 +52,7 @@ module.exports = {
             _['url'] = req.originalUrl;
         }
         'stack' in err ? _['stack'] = err['stack'] : 0;
-        'status' in err ? _['status'] = err['status'] || status : 0;
+        _['status'] = 'status' in err ? err['status'] : status || -1;
         _['msg'] = 'message' in _ && _['message'] || '';
         log4js.log4js.getLogger('ERROR').error(JSON.stringify(_));
         return _;
