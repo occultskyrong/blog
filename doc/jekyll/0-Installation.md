@@ -114,7 +114,13 @@ Configuration file: Z:/Jekyll/blog/_config.yml
 	```
     - ~~需要把上边的重来一遍~~
     - 查看[The 'json' native gem requires installed build tools](http://stackoverflow.com/questions/8100891/the-json-native-gem-requires-installed-build-tools)
-    	- [下载安装DevKit](http://rubyinstaller.org/downloads/archives)
+    	- ~~[下载安装DevKit](http://rubyinstaller.org/downloads/archives)
+	- 然后 cd 到 `DevKit` 的安装路径
+	- 根据[The 'json' native gem requires installed build tools](http://stackoverflow.com/questions/8100891/the-json-native-gem-requires-installed-build-tools)中step 一步一步
+	   - 其中  `ruby dk.rb init` 之后会生成一个 `config.yml` 文件，使用编辑器打开该文件
+	   - 根据 [Invalid configuration or no Rubies listed. Please fix 'config.yml' and rerun 'ruby dk.rb install'](http://stackoverflow.com/questions/30113666/invalid-configuration-or-no-rubies-listed-please-fix-config-yml-and-rerun-ru) 进行编辑，加入ruby地址。
+	   - 然后 ` ruby dk.rb install ` 就会有两条[INFO]信息提示安装成功。~~
+	
  
 - 浏览器访问`http://localhost:4000`
 - 此时应为一片空白？我服
