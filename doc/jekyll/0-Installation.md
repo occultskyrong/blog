@@ -6,6 +6,7 @@
 
 >>> OS 版本:          6.1.7601 Service Pack 1 Build 7601
 
+> 也可以直接查看这篇文章[http://www.thxopen.com/jekyll/2014/04/25/i-and-jekyll.html](http://www.thxopen.com/jekyll/2014/04/25/i-and-jekyll.html)
 # 0. Installation
 - **安装、部署**
 
