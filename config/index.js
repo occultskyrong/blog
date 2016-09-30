@@ -17,7 +17,7 @@ var _ = {
         }
     }
     , production: {
-        port: 8080
+        port: 80
         , host: '45.124.67.111'
         , redis: {
             "host": "localhost",
