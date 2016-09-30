@@ -7,7 +7,10 @@
 
 var moment = require('moment');
 
-var packageConfig = require('../../package.json');
+var log4js = require('../log4j')
+    , logger = log4js.Logger
+    , errorLog = log4js.error
+    , packageConfig = require('../../package.json');
 
 module.exports = {
     ENV: process.env.NODE_ENV || "development"      //全局变量
@@ -23,30 +26,33 @@ module.exports = {
         return '[' + (d ? d : moment().format(this.FORMAT) + '] [') + (t ? t : 'LOG') + ']  -   ';
     }
     /**
-     * 日志记录器，代替log4js
+     * 请求记录器，用于拦截路由请求
+     */
+    , http: function () {
+        logger('http').info(arguments[0]);
+    }
+    /**
+     * 日志记录器，用于记录日志
      * @param m     日志信息
      * @param t     日志标记，默认为LOG
      */
     , log: function (m, t) {
-        var _ = this.mom(t) + m;
-        console.info(_)
-    }
-    , info: function () {
-        console.info(arguments[0])
+        logger(t ? t : 'log').info(typeof m == 'string' ? m : JSON.stringify(m));
     }
     /**
      * 错误日志记录器
-     * @param m             错误信息
-     * @param s             错误状态
+     * @param err           错误信息
+     * @param req           请求体
      * @returns {Error}     返回一个Error类
      */
-    , error: function (m, s) {
-        var _ = new Error(m);
-        s = s || -1;//-1为未知错误
-        _.status = s;
-        _.timestamp = new Date().getTime();//错误时间戳
-        var __ = this.mom('ERROR') + 'status:' + s + '    message:' + m;
-        console.error(__);
+    , error: function (err,req) {
+        var _ = new Error(err.message||'暂无错误说明');
+        if(req&&'method' in req&&'originalUrl' in req){
+            _['method']=req.method;
+            _['url']=req.originalUrl;
+        }
+        _['stack']='stack' in err;
+        errorLog(_);
         return _;
     }
 };

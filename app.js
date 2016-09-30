@@ -19,8 +19,7 @@ var express = require('express')
 global.blog = require('./service/global');
 
 // 配置
-var config = require('./config');
-
+var config = require('./config')();
 
 //创建项目实例
 var app = express();
@@ -37,6 +36,9 @@ app.use(bodyParser.urlencoded({extended: true}));//定义url编码方式
 app.use(cookieParser());//定义cookie解析器
 app.use(express.static(path.join(__dirname, 'public')));//定义静态文件目录
 
+// 加载路由控制及拦截
+app.use('/', require('./routes'));
+
 //设置session
 app.use(session({//连接redis
     store: new RedisStore(config["redis"]),
@@ -48,5 +50,5 @@ app.use(session({//连接redis
 
 //启动项目，监听30012端口
 app.listen(config['port'] || 3000, config['host'] || 'localhost', function () {
-    blog.log('blog - 项目启动 , 当前环境:' + blog.ENV + ', 监听地址:' + config['host'] + ':' + config['port']);
+    blog.log('blog - 项目启动 ,  当前环境:' + blog.ENV + ',  监听host:' + config['host'] + ',  监听端口:' + config['port']);
 });
