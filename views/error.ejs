@@ -1,0 +1,9 @@
+<div class="container">
+    <% if(error){ %>
+    <h2 style="display: inline-block;"><%= error.status %></h2>
+    <button class="btn btn-primary" style="display: inline-block;margin-left: 10em;" onclick="history.back();">
+        <i class="glyphicon glyphicon-arrow-left"></i> 返回上一页
+    </button>
+    <pre><%= error.stack %></pre>
+    <% } %>
+</div>

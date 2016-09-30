@@ -9,7 +9,6 @@ var moment = require('moment');
 
 var log4js = require('../log4j')
     , logger = log4js.Logger
-    , errorLog = log4js.error
     , packageConfig = require('../../package.json');
 
 module.exports = {
@@ -43,16 +42,19 @@ module.exports = {
      * 错误日志记录器
      * @param err           错误信息
      * @param req           请求体
+     * @param status        错误状态码
      * @returns {Error}     返回一个Error类
      */
-    , error: function (err,req) {
-        var _ = new Error(err.message||'暂无错误说明');
-        if(req&&'method' in req&&'originalUrl' in req){
-            _['method']=req.method;
-            _['url']=req.originalUrl;
+    , error: function (err, req, status) {
+        var _ = new Error(err.message || '暂无错误说明');
+        if (req && 'method' in req && 'originalUrl' in req) {
+            _['method'] = req.method;
+            _['url'] = req.originalUrl;
         }
-        _['stack']='stack' in err;
-        errorLog(_);
+        'stack' in err ? _['stack'] = err['stack'] : 0;
+        'status' in err ? _['status'] = err['status'] || status : 0;
+        _['msg'] = 'message' in _ && _['message'] || '';
+        log4js.log4js.getLogger('ERROR').error(JSON.stringify(_));
         return _;
     }
 };
