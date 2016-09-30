@@ -65,7 +65,10 @@ router.use(function (err, req, res, next) {
 // 404错误处理
 router.use(function (req, res) {
     var err = new Error('Not Found');
-    res.render('./error.ejs', blog.error(err, req, 404));
+    res.render('./error.ejs', {
+        title: '页面未找到'
+        , error: blog.error(err, req, 404)
+    });
 });
 
 module.exports = router;

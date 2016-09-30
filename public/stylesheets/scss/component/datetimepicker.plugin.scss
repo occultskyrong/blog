@@ -1,0 +1,20 @@
+/*dateTimePicker的input输入框效果*/
+.form-group {
+  input, select {
+    cursor: text;
+    display: inline;
+    text-align: center;
+    width: 180px;
+    margin: 0 2em
+  }
+  select {
+    cursor: pointer;
+  }
+  &:last-child {
+    margin-bottom: 5px;
+  }
+}
+
+div.datetimepicker.datetimepicker-dropdown-bottom-right.dropdown-menu {
+  top: 187px !important;
+}

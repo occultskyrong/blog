@@ -1,0 +1,200 @@
+/**
+ * Created by zrz on 2016/4/6.
+ * 语法说明：
+ *    1.尽量使用类名来控制css，类名使用[css标准属性名缩写(见2)-属性值缩写(见3)]构成
+ *    2.单个单词属性名的使用前两个字母或者使用切分音，尽量不要超过3个字母；
+ *      多个单词使用每个单词的首字母
+ *    3.属性值缩写：
+ *        单个单词属性值：使用属性值的首字母,Ex:none --> n
+ *        多个单词属性值：使用每个单词的首字母,Ex:inline-block --> ib
+ *        px值：使用数字部分,Ex:3px --> 3
+ *        em值：需要和px进行区分，使用数字部分加e,Ex:16em -->16e
+ */
+
+/* display */
+.dp-n {
+  display: none;
+}
+
+.dp-i {
+  display: inline;
+}
+
+.dp-b {
+  display: block;
+}
+
+.dp-ib {
+  display: inline-block;
+}
+
+/* float */
+.fl-l {
+  float: left;
+}
+
+.fl-r {
+  float: right;
+}
+
+/* clear */
+.cl-b {
+  clear: both;
+}
+
+/* font-family */
+.ff-a {
+  font-family: Arial, sans-serif;
+}
+
+.ff-t {
+  font-family: Tahoma, sans-serif;
+}
+
+.ff-v {
+  font-family: Verdana, sans-serif;
+}
+
+.ff-s {
+  font-family: Simsun, sans-serif;
+}
+
+.ff-l {
+  font-family: 'Lucida Console', sans-serif;
+}
+
+.ff-w {
+  font-family: 'Microsoft Yahei', sans-serif;
+}
+
+.ff-skk {
+  font-family: STKaiti, KaiTi, SimSun, sans-serif;
+}
+
+/* text-align */
+.ta-c {
+  text-align: center;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.ta-l {
+  text-align: left;
+}
+
+.ta-j {
+  text-align: justify;
+}
+
+/* text-index */
+.ti-2e {
+  text-indent: 2em;
+}
+
+/* position */
+.ps-r {
+  position: relative;
+}
+
+.ps-a {
+  position: absolute;
+}
+
+/* margin */
+@for $i from 1 through 10 {
+  $px: $i*10;
+  .ml-#{$px} {
+    margin-left: #{$px}px;
+  }
+  .ml-#{$i}e {
+    margin-left: #{$i}em;
+  }
+}
+
+@for $i from 1 through 10 {
+  $px: $i*10;
+  .mt-#{$px} {
+    margin-top: #{$px}px;
+  }
+  .mt-#{$i}e {
+    margin-top: #{$i}em;
+  }
+}
+
+.lst-n {
+  list-style-type: none;
+}
+
+/* width */
+@for $i from 1 through 10 {
+  $px: $i*10;
+  .wi-#{$px} {
+    width: #{$px}px;
+  }
+  .wi-#{$i}e {
+    width: #{$i}em;
+  }
+}
+
+//去除li的点
+
+/* —————— todo 待整理 —————— */
+a:focus {
+  outline: none
+}
+
+.title-text {
+  font-size: 20px;
+  font-weight: bold
+}
+
+.price-em-gray:before {
+  content: "¥";
+  color: #999;
+}
+
+.price-em:before {
+  content: "¥";
+  color: #ff0042;
+}
+
+.price-em-black:before {
+  content: "¥";
+  color: #333;
+}
+
+.font-red {
+  color: #ff0142;
+}
+
+.font-gray {
+  color: #999;
+}
+
+.font-black {
+  color: #000;
+}
+
+.font-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bg-gray {
+  background: #888;
+}
+
+.NSimSun {
+  font-family: "新宋体";
+  font-size: 12px;
+}
+
+.YaHei-Regular {
+  font-family: "微软雅黑 Regular";
+  font-weight: bold;
+}
+
+

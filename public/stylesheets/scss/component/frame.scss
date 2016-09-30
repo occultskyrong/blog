@@ -1,0 +1,53 @@
+@import "reset.sky91";
+@import "lib.sky91";
+
+body {
+  background-color: #f2f2f2;
+}
+
+.app-header {
+  .container {
+    .navbar-header {
+      .navbar-brand {
+        padding: 8px;
+        img {
+          display: inline-block;
+          width: 35px;
+        }
+        span {
+          display: inline-block;
+        }
+      }
+    }
+    .navbar-title {
+      color: #f0f0f0;
+      padding-top: 6px;
+      padding-left: 4em;
+      font-size: 23px;
+    }
+  }
+}
+
+.app-context {
+  margin-top: 51px;
+}
+
+//*-date的样式mixin
+@mixin base-date { //时间选择器
+  padding: 10px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  text-align: center;
+  .query-submit {
+    margin-left: 3em;
+    width: 140px;
+  }
+}
+
+.app-footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 50px;
+  color: #767676;
+  border-top: 1px solid #e5e5e5;
+}

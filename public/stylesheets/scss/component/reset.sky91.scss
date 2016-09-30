@@ -1,0 +1,21 @@
+@charset "utf-8";
+/*!
+ * Blog v0.0.1 (http://sky91.com)
+ * Copyright 2016-2017 sky91, Inc.
+ */
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: auto !important;
+}
+
+//抹掉bootstrap的样式
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+//chrome浏览器的滚动条
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 6px;
+  background: #AFACAC;
+}

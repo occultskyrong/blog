@@ -1,0 +1,11 @@
+@import "../component/frame";
+
+// 首页 - 样式
+
+.app-context {
+  #home_menu {
+    .container > h1 > a {
+      margin-left: 2em;
+    }
+  }
+}
