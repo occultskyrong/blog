@@ -13,4 +13,11 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/history', function (req, res) {
+    res.render('./history/view', {
+        title: '更新日志'
+        , history: JSON.parse(require('fs').readFileSync('./public/static/history.json', 'utf8'))
+    });
+});
+
 module.exports = router;

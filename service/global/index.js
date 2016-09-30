@@ -14,6 +14,7 @@ var log4js = require('../log4j')
 module.exports = {
     ENV: process.env.NODE_ENV || "development"      //全局变量
     , NAME: packageConfig['name']                   //项目名称
+    , VERSION: packageConfig['version']             //项目版本
     , FORMAT: 'YYYY-MM-DD HH:mm:ss SSS'             //标准时间格式化参数
     /**
      * 组装记录器的头部时间标记
