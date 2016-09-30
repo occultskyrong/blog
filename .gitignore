@@ -5,3 +5,5 @@
 node_modules
 
 # Ignore logs
+logs/http/*.log
+logs/*.log
