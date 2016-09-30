@@ -16,7 +16,7 @@
 |[css组件化](./doc/css-component/readme.md)|sign|20%|2016年9月29日|
 |[购物车逻辑实现](./doc/cart/readme.md)|code|1%|2016年9月29日|
 |[聊天的简单实现](./doc/chat/readme.md)|code|1%|2016年9月29日|
-|[从0开始 - jekyll](./doc/jekyll/0-Installation.md)|Tutorial|1%|2016年9月29日|
+|[从0开始 - jekyll - Installation](./doc/jekyll/0-Installation.md)|Tutorial|80%|2016年9月29日|
 
 * 搬迁CSDN博客内容
 
