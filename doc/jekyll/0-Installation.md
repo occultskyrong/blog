@@ -101,7 +101,7 @@ Configuration file: Z:/Jekyll/blog/_config.yml
 	from 'http://rubyinstaller.org/downloads' and follow the instructions
 	at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
 	```
-	
+   - **此问题暂无解决**，wdm是ruby的一个watcher工具，应该是用来热更新的，暂时不安装也没啥问题。。
  
 - 浏览器访问`http://localhost:4000`
 - 此时应为一片空白？我服
