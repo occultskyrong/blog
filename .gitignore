@@ -7,3 +7,6 @@ node_modules
 # Ignore logs
 logs/http/*.log
 logs/*.log
+
+# Ignore .DS_Store @Mac
+.DS_Store
