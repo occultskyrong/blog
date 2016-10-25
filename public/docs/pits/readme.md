@@ -3,6 +3,9 @@
 
 ## 1. 百度地图API
 
+### 1.0 百度地图使用的坐标数据与其他地图的不同
+- 参见[ 常见问题 > 使用须知 > 坐标体系 ](http://lbsyun.baidu.com/index.php?title=open/question#.E5.9D.90.E6.A0.87.E4.BD.93.E7.B3.BB)
+
 ### 1.1 鹰眼轨迹中entity，必须先addColumn，然后才能在addEntity中使用某个column，类似于表结构的创建。
 - [addcolumn——添加entity属性字段](http://lbsyun.baidu.com/index.php?title=yingyan/api/entity#addcolumn.E2.80.94.E2.80.94.E6.B7.BB.E5.8A.A0entity.E5.B1.9E.E6.80.A7.E5.AD.97.E6.AE.B5)
 - [add——添加entity](http://lbsyun.baidu.com/index.php?title=yingyan/api/entity#add.E2.80.94.E2.80.94.E6.B7.BB.E5.8A.A0entity)
