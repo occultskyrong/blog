@@ -24,6 +24,8 @@
 |[购物车逻辑实现](./public/docs/cart/readme.md)|code|1%|2016年9月29日|
 |[聊天的简单实现](./public/docs/chat/readme.md)|code|1%|2016年9月29日|
 |[从0开始 - jekyll - Installation](./public/docs/jekyll/0-Installation.md)|Tutorial|80%|2016年9月29日|
+|[虚拟DOM](./public/docs/virtual-dom/readme.md)|document|0|2016年11月11日|
+|[双向数据绑定](./public/docs/mvvm/readme.md)|document|0|2016年11月11日|
 
 * 搬迁CSDN博客内容
 
