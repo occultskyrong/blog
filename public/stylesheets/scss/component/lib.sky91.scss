@@ -103,6 +103,10 @@
 }
 
 /* margin */
+.mg-0 {
+  margin: 0;
+}
+
 @for $i from 1 through 10 {
   $px: $i*10;
   .ml-#{$px} {

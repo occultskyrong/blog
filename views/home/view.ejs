@@ -7,12 +7,12 @@
     <div class="container">
         <h1>blog.sky91.cn</h1>
     </div>
-    <div class="col-sm-12">
-        <div class="col-sm-2">
+    <div class="row">
+        <div class="col-lg-2">
             <%- include ../_base/_hhc.plugin.ejs %>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>网站信息</h4>
+                    <h4 class="mg-0">网站信息</h4>
                 </div>
                 <div class="panel-body">
                     <ol>
@@ -21,10 +21,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-lg-8">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h5>文档列表</h5>
+                    <h3 class="mg-0">开坑记录</h3>
+                </div>
+                <div class="panel-body">
+                    <%- table %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h5 class="mg-0">文档列表</h5>
                 </div>
                 <div class="panel-body">
                     <ul>
