@@ -9,7 +9,7 @@ var router = require('express').Router()
     , cheerio = require('cheerio');
 
 router.get('/', function (req, res) {
-    var _md = markdown.marked('./readme.md')
+    var _md = markdown.marked('./README.md') // Linux大小写敏感
         , _table = '';
     // 将其中的table拆出
     var getTable = function () {
@@ -20,8 +20,8 @@ router.get('/', function (req, res) {
         if (isArr()) {
             _tArr = _tArr[1].split('</table>');
             if (isArr()) {
-                var $ = cheerio.load('<table class="table table-hover table-bordered table-condensed">'
-                    + _tArr[0] + '</table>');
+                var $ = cheerio.load('<table class="table table-hover' +
+                    ' table-bordered table-condensed mg-0">' + _tArr[0] + '</table>');
                 (function ($trs) {
                     for (var t in $trs) {
                         if ($trs.hasOwnProperty(t) && !!t && parseInt(t) > 0) {

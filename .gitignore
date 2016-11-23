@@ -10,3 +10,6 @@ logs/*.log
 
 # Ignore .DS_Store @Mac
 .DS_Store
+
+# Ignore JSHint
+.jshintrc

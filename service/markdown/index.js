@@ -5,8 +5,7 @@
 
 "use strict";
 
-var markdown = require('markdown').markdown
-    , marked = require('marked') // https://github.com/chjj/marked
+var marked = require('marked') // https://github.com/chjj/marked
     , fs = require('fs');
 
 module.exports = {
@@ -21,13 +20,9 @@ module.exports = {
      * @param ejs       ejs地址
      * @param title     标题
      * @param file      file地址
-     * @param option    markdown配置
      * @returns {*|String}
      */
-    , render: function (res, ejs, title, file, option) {
-        if (option) {// 设置配置信息
-            marked.setOptions(option);
-        }
+    , render: function (res, ejs, title, file) {
         var _markdown = marked(fs.readFileSync(file, 'utf-8'));
         ejs = ejs ? ejs : './docs/_base/_template';
         return res.render(ejs, {
@@ -49,6 +44,6 @@ module.exports = {
         if (option) {// 设置配置信息
             marked.setOptions(option);
         }
-        return marked(fs.readFileSync(file, 'utf-8'))
+        return marked(fs.readFileSync(file, 'utf-8'));
     }
 };
