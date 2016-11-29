@@ -116,14 +116,15 @@ var Listener = (function () {
 
     // 内容拼接
     var container = function () {
-        if (Tree) { // dom树存在则更新补丁
-            var newTree = Dom.set()
-                , patches = svd.diff(Tree, newTree);
-            svd.patch(Root, patches);
-            Tree = newTree;
+        if (Tree) {                                     // 虚拟树存在则更新补丁
+            var newTree = Dom.set()                     // 生成新的虚拟树
+                , patches = svd.diff(Tree, newTree);    // 与已有虚拟树对比
+            svd.patch(Root, patches);                   // 打补丁到原有Dom树中
+            Tree = newTree;                             // 更新虚拟树
         } else { // 无dom时构造
-            Root = Dom.set().render();
-            $('#cart_content').html(Root);
+            Tree = Dom.set();               // 构造虚拟树
+            Root = Tree.render();           // 将虚拟树构造为Dom树
+            $('#cart_content').html(Root);  // 将Dom树写入html
         }
     };
 
