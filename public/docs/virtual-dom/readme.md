@@ -2,7 +2,7 @@
 # 虚拟DOM
 
 ### Demo
-- [虚拟Dom的简单实现](../../_demo/virtual_dom/index.html)
+- [虚拟Dom的简单实现](../../../_demo/virtual_dom/index.html)
 
 ### 参考文献
 - 知乎提问 [怎么更好的理解虚拟DOM?](https://www.zhihu.com/question/29504639?sort=created)
