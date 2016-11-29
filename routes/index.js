@@ -11,7 +11,7 @@ var router = require('express').Router();
 router.get('/error', function (req, res) {
     var t = 't' in req.query && req.query['t'] || 404
         , errConfig = require('../config/error')
-        , error = errConfig[t] || {text: '错误标记'};
+        , error = {text: errConfig[t] || '错误标记'};
     return res.render('./error', {
         title: error['text']
         , error: {
@@ -32,6 +32,7 @@ router.use(function (req, res, next) {
 
 router.use('/api', require('./api'));       // api请求
 router.use('/docs', require('./docs'));     // docs文档请求
+router.use('/demo', require('./demo'));     // demo请求
 router.use('/', require('./web'));          // web页面请求
 
 // 拦截所有错误请求

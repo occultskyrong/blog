@@ -1,14 +1,15 @@
 <%- include ./_base/head.ejs %>
 <%- include ./_base/css.ejs %>
+<link rel="stylesheet" href="/stylesheets/css/web/blog.css">
 <%- include ./_base/container.ejs %>
 <%- include ./_base/header.ejs %>
-<div class="container" style="margin-top: 70px;">
+<div class="container mt-70">
     <% if(error){ %>
     <h2 style="display: inline-block;"><%= error.status %></h2>
-    <button class="btn btn-primary" style="display: inline-block;margin-left: 10em;" onclick="history.back();">
+    <button class="btn btn-primary dp-ib ml-10e" onclick="history.back();">
         <i class="glyphicon glyphicon-arrow-left"></i> 返回上一页
     </button>
-    <pre><%= error.stack %></pre>
+    <pre><%= 'stack' in error ? error.stack : 'message' in error ? error.message : '暂无错误说明' %></pre>
     <% } %>
 </div>
 <%- include ./_base/javascript.ejs %>
