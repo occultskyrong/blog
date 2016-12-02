@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试bug</title>
+</head>
+<body>
+
+<div id="container">
+    <div class="good-group" data-gid="1">
+        <button class="good-click">1</button>
+    </div>
+    <div class="good-group" data-gid="2">
+        <button class="good-click">2</button>
+    </div>
+    <div class="good-group" data-gid="3">
+        <button class="good-click">3</button>
+    </div>
+    <div class="good-group" data-gid="4">
+        <button class="good-click">4</button>
+    </div>
+    <div class="good-group" data-gid="5">
+        <button class="good-click">5</button>
+    </div>
+    <div class="good-group" data-gid="6">
+        <button class="good-click">6</button>
+    </div>
+    <div class="good-group" data-gid="7">
+        <button class="good-click">7</button>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('#container').on('click', '.good-click', function () {
+            $(this).parents('.good-group').remove();
+        });
+    });
+</script>
+</body>
+</html>

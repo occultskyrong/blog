@@ -97,8 +97,8 @@ var Dom = (function () {
         return el('div', {class: 'col-sm-12 form-group good-group', 'data-gid': good.gid}, [
             el('div', {class: 'col-sm-5'}, [good.name])
             , el('div', {class: 'col-sm-2'}, ['¥' + Calc.getPrice(good)])
-            , el('div', {class: 'col-sm-3 input-group', 'data-gid': good.gid}, [
-                el('div', {class: 'input-group-addon good-sub'}, ['-'])
+            , el('div', {class: 'col-sm-3 input-group'}, [
+                el('div', {class: 'input-group-addon good-sub', 'data-gid': good.gid}, ['-'])
                 , el('input', {
                     class: 'form-control good-quantity',
                     type: 'text',
@@ -138,22 +138,22 @@ var Listener = (function () {
 
     // 内容拼接
     var container = function () {
-        if (Tree) {                                     // 虚拟树存在则更新补丁
+        if (Tree) {                                 // 虚拟树存在则更新补丁
             var newTree = Dom.set()                     // 生成新的虚拟树
                 , patches = svd.diff(Tree, newTree);    // 与已有虚拟树对比
             svd.patch(Root, patches);                   // 打补丁到原有Dom树中
             Tree = newTree;                             // 更新虚拟树
-        } else { // 无dom时构造
-            Tree = Dom.set();               // 构造虚拟树
-            Root = Tree.render();           // 将虚拟树构造为Dom树
-            $('#cart_content').html(Root);  // 将Dom树写入html
+        } else {                                    // 无dom时构造
+            Tree = Dom.set();                           // 构造虚拟树
+            Root = Tree.render();                       // 将虚拟树构造为Dom树
+            $('#cart_content').html(Root);              // 将Dom树写入html
         }
     };
 
     // 事件侦听
     var setListener = function () {
         var changeQuantity = function ($e, qua) {
-            var gid = $e.parents('.input-group').data('gid')
+            var gid = $e.parents('.good-group').data('gid')
                 , good = GOODS[gid];
             good.quantity = parseInt(good.quantity) + qua;
             Calc.reset();
