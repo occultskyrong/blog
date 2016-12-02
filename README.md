@@ -27,7 +27,7 @@
 |[虚拟DOM](./public/docs/virtual-dom/readme.md)|document|20%|2016年11月11日|
 |[双向数据绑定](./public/docs/mvvm/readme.md)|document|0|2016年11月11日|
 |[ECMAScript 2016](./public/docs/ECMAScript 2016/readme.md)|demo|0|2016年12月1日|
-|[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0||2016年12月1日|
+|[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0|2016年12月1日|
 
 * 搬迁CSDN博客内容
 
