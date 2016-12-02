@@ -10,19 +10,37 @@
 // 模拟商品数据
 var GOODS = {
     229: {
-        "gid": 229,
-        "name": "统一阿萨姆奶茶 500ml*15瓶/箱",
-        "price": 45,
-        "dadou": 50,
-        "quantity": 1
-
+        gid: 229,
+        name: "统一阿萨姆奶茶 500ml*15瓶/箱",
+        price: 45,
+        dadou: 0,
+        limit: 10,
+        quantity: 1,
+        activity: {
+            baseLine: 100,
+            off: 10
+        }
+    },
+    157704: {
+        gid: 157704,
+        name: "山果印象蓝莓味1L*6瓶/箱",
+        price: 70,
+        dadou: 0,
+        limit: 3,
+        quantity: 2,
+        activity: {
+            baseLine: 100,
+            off: 10
+        }
     },
     146513: {
-        "gid": 146513,
-        "name": "【买10赠1】加多宝凉茶250ml*18盒/箱",
-        "price": 275,
-        "dadou": 0,
-        "quantity": 1
+        gid: 146513,
+        name: "【买10赠1】加多宝凉茶250ml*18盒/箱",
+        price: 275,
+        dadou: 50,
+        limit: 20,
+        quantity: 1,
+        activity: null
     }
 };
 
@@ -35,14 +53,18 @@ var Root, Tree;// Dom树和虚拟树
 // 价格计算
 var Calc = (function () {
 // 合计价格数据
-    var _Sum = {price: 0};
+    var _Sum;
     // 合计金额
     var sum = function (p) {
         _Sum.price = parseFloat(_Sum.price) + p;
     };
     // 总计价格的重置
     var reset = function () {
-        _Sum.price = 0;
+        _Sum = {
+            price: 0,       // 商品总价
+            activity: 0,    // 活动减价
+            dadou: 0        // 商品达豆总价
+        };
     };
     // 金额条显示
     var render = function () {
@@ -75,7 +97,7 @@ var Dom = (function () {
         return el('div', {class: 'col-sm-12 form-group good-group', 'data-gid': good.gid}, [
             el('div', {class: 'col-sm-5'}, [good.name])
             , el('div', {class: 'col-sm-2'}, ['¥' + Calc.getPrice(good)])
-            , el('div', {class: 'col-sm-3 input-group'}, [
+            , el('div', {class: 'col-sm-3 input-group', 'data-gid': good.gid}, [
                 el('div', {class: 'input-group-addon good-sub'}, ['-'])
                 , el('input', {
                     class: 'form-control good-quantity',
@@ -131,21 +153,23 @@ var Listener = (function () {
     // 事件侦听
     var setListener = function () {
         var changeQuantity = function ($e, qua) {
-            var good = GOODS[$e.data('gid')];
+            var gid = $e.parents('.input-group').data('gid')
+                , good = GOODS[gid];
             good.quantity = parseInt(good.quantity) + qua;
             Calc.reset();
             container();
         };
         $('#cart_content')
             .on('click', '.good-add', function () {// 增加数量
-                changeQuantity($(this).parents('.good-group'), 1);
+                changeQuantity($(this), 1);
             })
             .on('click', '.good-sub', function () {// 减少数量
-                changeQuantity($(this).parents('.good-group'), -1);
+                changeQuantity($(this), -1);
             });
     };
     // 初始化
     var init = function () {
+        Calc.reset();
         container();
         setListener();
     };
