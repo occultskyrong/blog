@@ -10,37 +10,52 @@
 // 模拟商品数据
 var GOODS = {
     229: {
-        gid: 229,
-        name: "统一阿萨姆奶茶 500ml*15瓶/箱",
-        price: 45,
-        dadou: 0,
-        limit: 10,
-        quantity: 1,
-        activity: {
-            baseLine: 100,
-            off: 10
+        gid: 229
+        , name: "统一阿萨姆奶茶 500ml*15瓶/箱"
+        , price: 45
+        , dadou: 0
+        , left: 10
+        , quantity: 1
+        , activity: {
+            aid: 1
+            , baseLine: 100
+            , off: 10
+        }
+    },
+    133470: {
+        gid: 133470
+        , name: "洽洽山核桃味瓜子108g/袋"
+        , price: 22
+        , dadou: 0
+        , left: 4
+        , quantity: 1
+        , activity: {
+            aid: 2
+            , baseLine: 55
+            , off: 20
         }
     },
     157704: {
-        gid: 157704,
-        name: "山果印象蓝莓味1L*6瓶/箱",
-        price: 70,
-        dadou: 0,
-        limit: 3,
-        quantity: 2,
-        activity: {
-            baseLine: 100,
-            off: 10
+        gid: 157704
+        , name: "山果印象蓝莓味1L*6瓶/箱"
+        , price: 70
+        , dadou: 0
+        , left: 3
+        , quantity: 2
+        , activity: {
+            aid: 1
+            , baseLine: 100
+            , off: 10
         }
     },
     146513: {
-        gid: 146513,
-        name: "【买10赠1】加多宝凉茶250ml*18盒/箱",
-        price: 275,
-        dadou: 50,
-        limit: 20,
-        quantity: 1,
-        activity: null
+        gid: 146513
+        , name: "【买10赠1】加多宝凉茶250ml*18盒/箱"
+        , price: 275
+        , dadou: 50
+        , left: 20
+        , quantity: 1
+        , activity: null
     }
 };
 
@@ -50,20 +65,18 @@ var el = svd.el;                // 创建虚拟元素
 
 var Root, Tree;// Dom树和虚拟树
 
+
 // 价格计算
 var Calc = (function () {
-// 合计价格数据
-    var _Sum;
-    // 合计金额
-    var sum = function (p) {
-        _Sum.price = parseFloat(_Sum.price) + p;
-    };
+    // 合计价格数据
+    var _;
+
     // 总计价格的重置
     var reset = function () {
-        _Sum = {
-            price: 0,       // 商品总价
+        _ = {
+            sum: 0,       // 商品总价
             activity: 0,    // 活动减价
-            dadou: 0        // 商品达豆总价
+            dd: 0        // 商品达豆总价
         };
     };
     // 金额条显示
@@ -71,32 +84,47 @@ var Calc = (function () {
         return el('div', {
             class: 'col-sm-12',
             style: 'text-align:right;'
-        }, ['合计金额 ¥' + _Sum.price + ' 元']);
+        }, ['合计金额 ¥' + _.price + ' 元']);
     };
     // 获取商品价格
     var getPrice = function (g) {
         return g.price;
     };
-    // 计算商品小计价格
-    var getGS = function (g) {
-        return g.quantity * getPrice(g);
-    };
     return {
-        sum: sum
-        , getPrice: getPrice
+        getPrice: getPrice
         , render: render
         , reset: reset
-        , getGS: getGS
+        , _: _
     };
 }());
 
+// 商品类
+var Good = function (g) {
+    var _ = Calc._;
+    this.price = Calc.getPrice(g);
+    this.sum = g.quantity * this.price;
+    this.dd = 'dadou' in g && g.dadou || 0;
+    // 合计价格、达豆
+    _.sum = parseFloat(_.sum) + this.sum;
+    _.dd = parseInt(_.dd) + this.dd;
+};
+
 // Dom操作
 var Dom = (function () {
+
+    // 活动列表
+    var _activityList = {};
+
     // 拼装商品
     var setGood = function (good) {
-        return el('div', {class: 'col-sm-12 form-group good-group', 'data-gid': good.gid}, [
+        var _opt = {class: 'col-sm-12 form-group good-group', 'data-gid': good.gid}
+            , _g = new Good(good);
+        if (good.quantity <= 0) {
+            _opt['style'] = 'display:none;';
+        }
+        return el('div', _opt, [
             el('div', {class: 'col-sm-5'}, [good.name])
-            , el('div', {class: 'col-sm-2'}, ['¥' + Calc.getPrice(good)])
+            , el('div', {class: 'col-sm-2'}, ['¥' + _g.price] + (_g.dd ? ' ( ' + _g.dd + '达豆 ) ' : ''))
             , el('div', {class: 'col-sm-3 input-group'}, [
                 el('div', {class: 'input-group-addon good-sub', 'data-gid': good.gid}, ['-'])
                 , el('input', {
@@ -107,19 +135,22 @@ var Dom = (function () {
                 })
                 , el('div', {class: 'input-group-addon good-add'}, ['+'])
             ])
-            , el('div', {class: 'col-sm-2'}, ['¥' + Calc.getGS(good)])
+            , el('div', {class: 'col-sm-2'}, ['¥' + _g.price])
         ]);
     };
+    // 拼装活动信息
+    var setActivity = function (act) {
+
+    };
     // 拼装商品列表
-    var setGoodsList = function () {
+    var setList = function () {
         var _gld = [];//商品列表dom数组
         for (var g in GOODS) {
             if (GOODS.hasOwnProperty(g)) {
                 var good = GOODS[g];
-                if (good.quantity > 0) {
-                    Calc.sum(good.quantity * Calc.getPrice(good));
-                    _gld.push(setGood(good));
-                }
+                // if (good.quantity > 0) {
+                _gld.push(setGood(good));
+                // }
             }
         }
         _gld.push(Calc.render());
@@ -129,7 +160,7 @@ var Dom = (function () {
         }, _gld);
     };
     return {
-        set: setGoodsList
+        set: setList
     };
 }());
 
@@ -152,8 +183,8 @@ var Listener = (function () {
 
     // 事件侦听
     var setListener = function () {
-        var changeQuantity = function ($e, qua) {
-            var gid = $e.parents('.good-group').data('gid')
+        var changeQuantity = function (e, qua) {
+            var gid = $(e).parents('.good-group').data('gid')
                 , good = GOODS[gid];
             good.quantity = parseInt(good.quantity) + qua;
             Calc.reset();
