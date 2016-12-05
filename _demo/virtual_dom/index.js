@@ -84,47 +84,50 @@ var Calc = (function () {
         return el('div', {
             class: 'col-sm-12',
             style: 'text-align:right;'
-        }, ['合计金额 ¥' + _.price + ' 元']);
+        }, ['合计金额 ¥' + _.sum + ' 元']);
     };
     // 获取商品价格
     var getPrice = function (g) {
         return g.price;
     };
+
+    // 商品类
+    var Good = function (g) {
+        this.price = Calc.getPrice(g);
+        this.sum = g.quantity * this.price;
+        this.dd = 'dadou' in g && g.dadou || 0;
+        this.dc = this.dd * g.quantity;
+        // 合计价格、达豆
+        _.sum = parseFloat(_.sum) + this.sum;
+        _.dc = parseInt(_.dc) + this.dc; //dadouCount
+    };
     return {
         getPrice: getPrice
         , render: render
         , reset: reset
-        , _: _
+        , Good: Good
     };
 }());
-
-// 商品类
-var Good = function (g) {
-    var _ = Calc._;
-    this.price = Calc.getPrice(g);
-    this.sum = g.quantity * this.price;
-    this.dd = 'dadou' in g && g.dadou || 0;
-    // 合计价格、达豆
-    _.sum = parseFloat(_.sum) + this.sum;
-    _.dd = parseInt(_.dd) + this.dd;
-};
 
 // Dom操作
 var Dom = (function () {
 
     // 活动列表
-    var _activityList = {};
+    var _activityList = {}
+        , _goodDomArray = []; // 非活动商品dom数组
 
     // 拼装商品
     var setGood = function (good) {
         var _opt = {class: 'col-sm-12 form-group good-group', 'data-gid': good.gid}
-            , _g = new Good(good);
-        if (good.quantity <= 0) {
+            , _g = new Calc.Good(good);
+        if (good.quantity <= 0) { //fixme 删除商品，则隐藏，否则有个侦听的bug
             _opt['style'] = 'display:none;';
         }
         return el('div', _opt, [
             el('div', {class: 'col-sm-5'}, [good.name])
-            , el('div', {class: 'col-sm-2'}, ['¥' + _g.price] + (_g.dd ? ' ( ' + _g.dd + '达豆 ) ' : ''))
+            , el('div', {class: 'col-sm-2'}, ['¥' + _g.price]
+                + (_g.dd ? ' ( ' + _g.dd + '达豆 ) ' : '')
+            )
             , el('div', {class: 'col-sm-3 input-group'}, [
                 el('div', {class: 'input-group-addon good-sub', 'data-gid': good.gid}, ['-'])
                 , el('input', {
@@ -135,24 +138,74 @@ var Dom = (function () {
                 })
                 , el('div', {class: 'input-group-addon good-add'}, ['+'])
             ])
-            , el('div', {class: 'col-sm-2'}, ['¥' + _g.price])
+            , el('div', {class: 'col-sm-2'}, ['¥' + _g.sum]
+                + (_g.dc ? ' ( ' + _g.dc + '达豆 ) ' : '')
+            )
         ]);
     };
-    // 拼装活动信息
-    var setActivity = function (act) {
-
+    // 重置活动信息
+    var resetActivity = function () {
+        _activityList = {};
+        _goodDomArray = [];
     };
+
+    // 写入活动信息
+    var setActivity = function (good) {
+        if ('activity' in good && good.activity) {
+            var _act = good.activity
+                , _aid = _act.aid
+                , _good = new Calc.Good(good);
+            if (_aid in _activityList) {// 当前活动已存在
+                var __act = _activityList[_aid];
+                __act.sum = parseFloat(__act.sum) + _good.sum;
+                __act.goods.push(setGood(good));
+            } else {
+                _activityList[_aid] = {
+                    sum: _good.sum
+                    , baseLine: good.activity.baseLine
+                    , off: good.activity.off
+                    , goods: [setGood(good)]
+                };
+            }
+        } else { // 非活动商品列表
+            _goodDomArray.push(setGood(good));
+        }
+    };
+
+    // 拼接活动信息
+    var getActivity = function () {
+        var _act = _activityList
+            , _ = [];
+        for (var a in _act) {
+            if (_act.hasOwnProperty(a)) {
+                var __act = _act[a], __dom;
+                if (__act.sum >= __act.baseLine) {
+                    __dom = ' 已满 ¥' + __act.baseLine + ' 元,减 ¥' + __act.off;
+                } else {
+                    __dom = ' 还差 ¥' + (__act.baseLine - __act.sum) + ' 元满 ' + __act.baseLine;
+                }
+                _.push(el('div', {
+                    class: 'col-sm-12 form-group activity-group',
+                    'data-aid': a
+                }, [__dom]));
+                _ = _.concat(__act.goods);
+            }
+        }
+        return _;
+    };
+
     // 拼装商品列表
     var setList = function () {
         var _gld = [];//商品列表dom数组
+        resetActivity();
         for (var g in GOODS) {
             if (GOODS.hasOwnProperty(g)) {
                 var good = GOODS[g];
-                // if (good.quantity > 0) {
-                _gld.push(setGood(good));
-                // }
+                setActivity(good);
             }
         }
+        _gld = _gld.concat(getActivity());
+        _gld = _gld.concat(_goodDomArray);
         _gld.push(Calc.render());
         return el('div', {
             class: 'col-sm-12 form-inline',
