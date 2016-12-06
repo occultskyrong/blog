@@ -7,3 +7,6 @@
   - 参考[livoras/simple-virtual-dom](https://github.com/livoras/simple-virtual-dom)
   - [虚拟Dom的实现](http://blog.sky91.cn/demo/virtual_dom/index.html)
   
+- RequireJS
+  - 参考[]()
+  - []() 

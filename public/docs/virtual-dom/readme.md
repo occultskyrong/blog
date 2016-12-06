@@ -3,7 +3,7 @@
 
 ### Demo
 - 虚拟Dom的简单实现
-  - [ 源码 ](../../../_demo/virtual_dom/index.html)
+  - [ 源码 ](../../../_demo/virtual_dom/index.js)
   - [ 示例 ](http://blog.sky91.cn/demo/virtual_dom/index.html)
 
 ### 参考文献

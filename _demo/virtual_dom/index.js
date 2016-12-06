@@ -181,6 +181,8 @@ var Dom = (function () {
                 var __act = _act[a], __dom;
                 if (__act.sum >= __act.baseLine) {
                     __dom = ' 已满 ¥' + __act.baseLine + ' 元,减 ¥' + __act.off;
+                } else if (__act.sum <= 0) {// 该活动总价为0
+                    continue;//fixme   
                 } else {
                     __dom = ' 还差 ¥' + (__act.baseLine - __act.sum) + ' 元满 ' + __act.baseLine;
                 }
@@ -243,6 +245,7 @@ var Listener = (function () {
             Calc.reset();
             container();
         };
+        // fixme 监听事件错误
         $('#cart_content')
             .on('click', '.good-add', function () {// 增加数量
                 changeQuantity($(this), 1);
