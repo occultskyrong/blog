@@ -23,9 +23,9 @@
 |[css组件化](./public/docs/css-component/readme.md)|sign|20%|2016年09月29日|
 |[购物车逻辑实现](./public/docs/cart/readme.md)|code|1%|2016年09月29日|
 |[聊天的简单实现](./public/docs/chat/readme.md)|code|1%|2016年09月29日|
-|[从0开始 - jekyll - Installation](./public/docs/jekyll/0-Installation.md)|Tutorial|80%|2016年09月29日|
+|~~[从0开始 - jekyll - Installation](./public/docs/jekyll/0-Installation.md)~~|Tutorial|80%|2016年09月29日|
 |[虚拟DOM](./public/docs/virtual-dom/readme.md)|demo|60%|2016年11月11日|
-|[RequireJS 自实现](./public/docs/requireJS/readme.md)|demo|0|2016年12月6日|
+|[RequireJS](./public/docs/requireJS/readme.md)|demo|0|2016年12月6日|
 |[双向数据绑定](./public/docs/mvvm/readme.md)|document|0|2016年11月11日|
 |[ECMAScript 2016](./public/docs/ECMAScript 2016/readme.md)|demo|0|2016年12月1日|
 |[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0|2016年12月1日|
