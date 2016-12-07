@@ -15,7 +15,7 @@ router.get('/*', function (req, res) {
         try{
             return res.end(require('fs').readFileSync('./_demo' + uri));
         }catch (e){
-            
+            //fixme 
         }
     }
     return res.redirect('/error?t=404');

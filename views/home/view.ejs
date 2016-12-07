@@ -16,7 +16,7 @@
                 </div>
                 <div class="panel-body">
                     <ol>
-                        <li><a href="https://github.com/occultskyrong/blog">GitHub地址</a></li>
+                        <li><a target="_blank" href="https://github.com/occultskyrong/blog">GitHub地址</a></li>
                     </ol>
                 </div>
             </div>
@@ -27,12 +27,21 @@
                     <h3 class="mg-0">开坑记录</h3>
                 </div>
                 <div class="panel-body pd-0">
-                    <%- table %>
+                    <%- history %>
                 </div>
             </div>
         </div>
         <%- include ./module/doc.ejs %>
-        <%- include ./module/demo.ejs %>
+        <div class="col-lg-2">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h5 class="mg-0">Demo列表</h5>
+                </div>
+                <div class="panel-body">
+                    <%- demo %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <%- include ../_base/javascript.ejs %>
