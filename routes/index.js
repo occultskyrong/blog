@@ -5,6 +5,8 @@
 
 "use strict";
 
+/* globals blog */
+
 var router = require('express').Router();
 
 // 错误页面的路由
@@ -27,6 +29,7 @@ router.use('/login', require('./login'));
 
 // 拦截所有路由请求，主要是进行login验证
 router.use(function (req, res, next) {
+    blog.http(req);// 记录所有路由请求
     next();
 });
 

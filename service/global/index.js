@@ -26,10 +26,24 @@ module.exports = {
         return '[' + (d ? d : moment().format(this.FORMAT) + '] [') + (t ? t : 'LOG') + ']  -   ';
     }
     /**
-     * 请求记录器，用于拦截路由请求
+     * 获取客户端ip
+     * @param req
+     * @returns {*|string}
      */
-    , http: function () {
-        logger('http').info(arguments[0]);
+    , getCip: function (req) {
+        return (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress;
+    }
+    /**
+     * 请求记录器，用于拦截路由请求
+     * @param req
+     */
+    , http: function (req) {
+        logger('http').info('ip:' + this.getCip(req)
+            + ';  url:' + req.url
+            + ';  method:' + req.method
+            + ";  queries:" + JSON.stringify(req.query)
+            + ";  body:" + JSON.stringify(req.body)
+        );
     }
     /**
      * 日志记录器，用于记录日志
