@@ -1,16 +1,49 @@
 <%- include ./_base/head.ejs %>
 <%- include ./_base/css.ejs %>
 <link rel="stylesheet" href="/stylesheets/css/web/blog.css">
+<style>
+    .app-error > .error-title {
+        display: inline-block;
+    }
+
+    .app-error > .error-backspace {
+        display: inline-block;
+        margin: 2em 10em;
+    }
+
+    .app-error .error-img {
+        background: url("/image/icon/github.png");
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 36px 36px;
+        display: inline-block;
+        position: relative;
+        padding-left: 40px;
+    }
+
+    .app-error .error-img:hover {
+        background-image: url("/image/icon/github_hover.png");
+        text-decoration: none;
+        color: #1296db;
+    }
+</style>
 <%- include ./_base/container.ejs %>
 <%- include ./_base/header.ejs %>
-<div class="container mt-70">
+<div class="container mt-70 app-error">
     <% if(error){ %>
-    <h2 style="display: inline-block;"><%= error.status %></h2>
-    <button class="btn btn-primary dp-ib ml-10e" onclick="history.back();">
+    <h2 class="error-title">
+        <%= error.status %>
+        <small><%= error.status == 404 ? '别挣扎了，并没有你要找的页面~' : '弄啥咧？' %></small>
+    </h2>
+    <button class="btn btn-primary error-backspace" onclick="history.back();">
         <i class="glyphicon glyphicon-arrow-left"></i> 返回上一页
     </button>
-    <pre><%= 'stack' in error ? error.stack : 'message' in error ? error.message : '暂无错误说明' %></pre>
+    <pre onselectstart="return false;"><%= 'stack' in error ? error.stack : 'message' in error ? error.message : '暂无错误说明' %></pre>
     <% } %>
+    <h2>本blog使用NodeJS完成搭建，所有源码见
+        <a class="error-img" target="_blank"
+           href="https://github.com/occultskyrong/blog">occultskyrong/blog</a>
+    </h2>
 </div>
 <%- include ./_base/javascript.ejs %>
 <%- include ./_base/footer.ejs %>
