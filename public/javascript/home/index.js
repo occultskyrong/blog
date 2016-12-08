@@ -8,6 +8,7 @@
 var clockCanvas = require('../_plugin/_clock.canvas');
 
 $(function () {
+    clockCanvas.canvasDraw();
     setInterval(function () {
         clockCanvas.canvasDraw();
     },1000);
