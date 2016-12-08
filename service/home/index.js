@@ -46,6 +46,7 @@ module.exports = {
                                 $tda.attr('href', '##');
                                 $tr.addClass('danger');
                             }
+                            $tda.attr('target', '_blank');
                         }
                     }
                     $trs.eq(0).addClass('bg-primary');// 第1行为thead
