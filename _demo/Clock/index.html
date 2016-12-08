@@ -5,11 +5,15 @@
     <title>时钟表盘</title>
 </head>
 <body>
-<canvas id="clock_canvas" width="200" height="200" style="border: 1px #f00 dashed;"></canvas>
-<script src="./index.js"></script>
+<canvas id="clock_canvas" width="250" height="250" style="border: 1px #f00 dashed;"></canvas>
+<script src="/javascript/_plugin/_clock.canvas.js">
+    window.config = {1: 2}
+</script>
 <script>
     window.onload = function () {
-        Clock.canvas();
+        setInterval(function () {
+            canvasDraw();
+        }, 1000);
     };
 </script>
 </body>

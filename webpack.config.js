@@ -8,13 +8,12 @@
 var webpack = require('webpack')
     , path = require("path")
     , ExtractTextPlugin = require("extract-text-webpack-plugin")
-    , baseUrl = {
-        web_url: './public/javascript/'
-    }
+    , BaseUrl = './public/javascript/'
     ;
 
 module.exports = {
     entry: {    //输入文件
+        "home": BaseUrl + "home/index"
     },
     output: {//输出文件
         path: path.join(__dirname, "./public/src"),//主目录

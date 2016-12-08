@@ -9,14 +9,17 @@
     </div>
     <div class="row">
         <div class="col-lg-2">
-            <%- include ../_base/_hhc.plugin.ejs %>
+            <%- include ../_base/_clock.canvas.ejs %>
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="mg-0">网站信息</h4>
                 </div>
                 <div class="panel-body">
                     <ol>
-                        <li><a target="_blank" href="https://github.com/occultskyrong/blog">GitHub地址</a></li>
+                        <li>
+                            <a target="_blank"
+                               href="https://github.com/occultskyrong/blog">GitHub地址</a>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -45,4 +48,5 @@
     </div>
 </div>
 <%- include ../_base/javascript.ejs %>
+<script src="/src/home.blog.min.js"></script>
 <%- include ../_base/footer.ejs %>
