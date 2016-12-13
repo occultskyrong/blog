@@ -1,0 +1,69 @@
+/*!
+ * JSHint v0.0.1
+ * created by zhangrz@diandainfo
+ * Link @https://github.com/diandainfo/dd_web/blob/master/doc/.jshintrc
+ * License by MIT @https://github.com/diandainfo/dd_web/blob/master/LICENSE
+ * Stand by JSHint Options @http://jshint.com/docs/options/
+ * Copyright 2014-2017 DiandaInfo, Inc.
+ */
+{
+  // 禁用位运算符(^、|、&)
+  "bitwise": true,
+  // 强制使用花括号({}),循环或者条件语句必须使用花括号包围
+  "curly": true,
+  // 允许使用 == 和 !=
+  "eqeqeq": false,
+  // ECMAScirpt版本
+  "esversion": 5,
+  // 强制在 for in 中使用hasOwnProperty进行自属性检查
+  "forin": true,
+  // 不允许变更原型链，new Date().format()使用局部jsHint检查
+  "freeze": true,
+  // 禁止定义之前使用变量，忽略 function 函数声明
+  "latedef": true,
+  // function中逻辑复杂度检查，单个函数中逻辑判断不超过10个
+  "maxcomplexity": 10,
+  // 最大嵌套深度，部分callback的判断中(callback、if、for、hasOwnProperty、if)会超过4层
+  "maxdepth": 5,
+  // function的最大参数列表数量，建议使用(data,callback)，多于4个的参数使用option进行封装，后台可能传递req/res
+  "maxparams": 4,
+  // function中最大语句数量，单方法中逻辑语句不超过20行，多于则需要进行闭包封装
+  "maxstatements": 20,
+  // 禁止未使用的构造器
+  "nonew": true,
+  // 禁止使用错误的typeof类型
+  "notypeof": true,
+  // 禁止使用eval
+  "evil": true,
+  // 全局严格模式
+  "strict": "global",
+  // 禁止使用未声明的变量
+  "undef": true,
+  // 禁止生命未使用的变量
+  "unused": true,
+  // -- 忽略以下全局变量
+  "predef": [
+    'markdown',
+  ],
+
+  /**
+   * ---- 版本更新后停用的配置  ----
+   */
+  // 允许使用a['b']，而不是必须使用a.b
+  "sub": true,
+  // 允许 不安全的行中断
+  "laxbreak": true,
+  // 允许 , 开头的编码样式
+  "laxcomma": true,
+
+  /**
+   * ---- 环境，用于全局变量的识别  ----
+   */
+  "browser": true,
+  "browserify": true,
+  "jquery": true,
+  "module": true,
+  "node": true,
+  // 允许使用开发工具，console、alert等
+  "devel": true
+}

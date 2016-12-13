@@ -12,5 +12,5 @@ logs/*.log
 # Ignore .DS_Store @Mac
 .DS_Store
 
-# Ignore JSHint
-.jshintrc
+# Ignore secret key text
+config/key.js
