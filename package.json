@@ -2,6 +2,8 @@
   "name": "blog",
   "version": "0.0.1",
   "private": true,
+  "author": "occultskyrong@gmail.com",
+  "description": "个人博客",
   "scripts": {
     "start": "node ./app.js"
   },
