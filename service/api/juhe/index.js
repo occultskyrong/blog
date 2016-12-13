@@ -9,6 +9,7 @@ var request = require('request');
 var _Key ='8f1d312a25f92ec15938a02026b23d62'
     ,_BaseUri='http://web.juhe.cn:8080' // 基础通信URL
     ;
+
 module.exports = {
     get: function (url, callback) {
         var _url = _BaseUri + url + '&key=' + _Key;

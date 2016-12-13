@@ -5,6 +5,8 @@
 
 "use strict";
 
+/* globals blog */
+
 var _ = {
     development: {
         port: 3000

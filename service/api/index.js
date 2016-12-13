@@ -5,7 +5,9 @@
 "use strict";
 
 // 接口集合
-module.exports={
-    //聚合数据
-    juhe:require('./juhe')
+module.exports = {
+    // 聚合数据
+    juhe: require('./juhe')
+    // Tencent 腾讯云
+    , tencent: require('./tencent')
 };
