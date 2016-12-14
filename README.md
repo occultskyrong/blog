@@ -29,8 +29,9 @@
 |[双向数据绑定](./public/docs/mvvm/readme.md)|document|0|2016年11月11日|
 |[ECMAScript 2016](./public/docs/ECMAScript 2016/readme.md)|demo|0|2016年12月1日|
 |[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0|2016年12月1日|
-|[搜索实现的简单说明](./public/docs/search/simple.md)|document|0|2016年12月8日|
+|[搜索实现的简单说明](./public/docs/Elastic Stack/search.md)|document|0|2016年12月8日|
 |[接驳腾讯云 - 对象存储服务](./public/docs/Tencent/cos.md)|document|1|2016年12月13日|
+|[基于Elastic Stack实现数据可视化](./public/docs/Elastic Stack/view.md)|document|0|2016年12月14日|
 
 * 搬迁CSDN博客内容
 
