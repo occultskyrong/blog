@@ -12,14 +12,14 @@
 - [elastic/elasticsearch-definitive-guide](https://github.com/elastic/elasticsearch-definitive-guide)
 - [《Elasticsearch: 权威指南》](http://106.186.120.253/preview/foreword_id.html)
 - [Elasticsearch 权威指南（中文版）](http://es.xiaoleilu.com/)
-- 《Elasticsearch服务器开发》
+- 《Elasticsearch服务器开发(第2版)》
 
 ## ElasticSearch
 - 前言
   > Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 
   > 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，
   > 这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。
-  > 
+  
   > Elasticsearch 不仅仅只是全文搜索，我们还将介绍结构化搜索、数据分析、复杂的语言处理、地理位置和对象间关联关系等。 
   > 我们还将探讨如何给数据建模来充分利用 Elasticsearch 的水平伸缩性，以及在生产环境中如何配置和监视你的集群。
 
@@ -33,17 +33,18 @@
     - SQL转换为ES查询
     - 如何处理关联关系？
       - 例如订单和订单详情，将订单详情合并在订单的字段(非规范化你的数据)
-      
       > ▲ [Elasticsearch: 权威指南 » 数据建模 » 关联关系处理](http://106.186.120.253/preview/relations.html)
+      
   - 面向文档：JSON
     > [Elasticsearch: 权威指南 » 基础入门 » 你知道的, 为了搜索… » 面向文档](http://106.186.120.253/preview/_document_oriented.html) 
+    
 - Basic Concepts
   > [Elasticsearch Reference [5.1] » Getting Started » Basic Concepts](https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_cluster)
   > [基本概念](https://endymecy.gitbooks.io/elasticsearch-guide-chinese/content/getting-started/basic-concepts.html)
   
   - Node、Shards、Replicas
-  
   > Relational DB -> Databases -> Tables -> Rows -> Columns
+  > 
   > Elasticsearch -> Indices   -> Types  -> Documents -> Fields
   > 
   > [Lucene学习总结之一：全文检索的基本原理](http://blog.csdn.net/forfuture1978/article/details/4711308)
@@ -90,6 +91,7 @@
     - Index:Type 1:1
       - > [Index vs. Type](https://www.elastic.co/blog/index-vs-type)
     - 货架商品的Mapping
+    
       ```
       "analysis": {
             "analyzer": {
@@ -128,6 +130,7 @@
             }
         }
       ``` 
+
 - Search
   - bool
 - Aggregations
