@@ -33,12 +33,14 @@
     - SQL转换为ES查询
     - 如何处理关联关系？
       - 例如订单和订单详情，将订单详情合并在订单的字段(非规范化你的数据)
+      
       > ▲ [Elasticsearch: 权威指南 » 数据建模 » 关联关系处理](http://106.186.120.253/preview/relations.html)
   - 面向文档：JSON
     > [Elasticsearch: 权威指南 » 基础入门 » 你知道的, 为了搜索… » 面向文档](http://106.186.120.253/preview/_document_oriented.html) 
 - Basic Concepts
   > [Elasticsearch Reference [5.1] » Getting Started » Basic Concepts](https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_cluster)
   > [基本概念](https://endymecy.gitbooks.io/elasticsearch-guide-chinese/content/getting-started/basic-concepts.html)
+  
   - Node、Shards、Replicas
   
   > Relational DB -> Databases -> Tables -> Rows -> Columns
@@ -46,12 +48,14 @@
   > 
   > [Lucene学习总结之一：全文检索的基本原理](http://blog.csdn.net/forfuture1978/article/details/4711308)
   > - 建议阅读 章节 “三、如何创建索引”
+  
   - Document
     - 以下节选自《Elasticsearch 服务器开发(第2版)》 1.1.1小节，有改动
     > *文档*（document）：索引和搜索时使用的主要数据载体，包含一个或多个存有数据的字段
     > *字段*（field）：文档的一部分，包含名称和值两部分
     > *词*（term）：一个搜索单元，表示文本中的一个词
     > *标记*（token）：表示在字段文本中出现的词，由这个词的文本、开始和结束偏移量以及类型组成
+    
   - Indices/Index
     - > ▲ [倒排索引](http://es.xiaoleilu.com/052_Mapping_Analysis/35_Inverted_index.html)
     - Analyzer/Analysis
@@ -65,6 +69,7 @@
       > - 一个*分词器*（tokenizer）
       > - 零个或多个*标记过滤器*（token filter）
       > - 零个或多个*字符映射器*（character mapper）
+      
       - Analyzers
         - Pinyin
           - 中文 >> 拼音 
@@ -78,7 +83,7 @@
         > - 标记过滤器用来处理标记流中的标记
         > - 最后，字符映射器对未经分析的文本起作用，它们在分词器之前工作。
         > 因此，我们可以很容易地从文本的整体部分去除HTML标签而无需担心它们被标记
-        - 
+         
       - Token Filters
       - Character Filters
   - Mapping、Type
