@@ -35,13 +35,14 @@
     - 如何处理关联关系？
       - 例如订单和订单详情，将订单详情合并在订单的字段(非规范化你的数据)
       
-      > ▲ [Elasticsearch: 权威指南 » 数据建模 » 关联关系处理](http://106.186.120.253/preview/relations.html)
+      > [Elasticsearch: 权威指南 » 数据建模 » 关联关系处理](http://106.186.120.253/preview/relations.html)
       
   - 面向文档：JSON
     > [Elasticsearch: 权威指南 » 基础入门 » 你知道的, 为了搜索… » 面向文档](http://106.186.120.253/preview/_document_oriented.html) 
     
 - Basic Concepts
   > [Elasticsearch Reference [5.1] » Getting Started » Basic Concepts](https://www.elastic.co/guide/en/elasticsearch/reference/current/_basic_concepts.html#_cluster)
+  
   > [基本概念](https://endymecy.gitbooks.io/elasticsearch-guide-chinese/content/getting-started/basic-concepts.html)
   
   - Node、Shards、Replicas
@@ -93,66 +94,49 @@
   - Mapping、Type
     - Index:Type 1:1
       > [Index vs. Type](https://www.elastic.co/blog/index-vs-type)
-      
-    - 货架商品的Mapping
-    
-      ```
-      "analysis": {
-            "analyzer": {
-                "only_pinyin_analyzer": {
-                    "tokenizer": "keyword",
-                    "filter": ["only_pinyin","lowercase","_pattern"]
-                }
-                , "full_pinyin_analyzer": {
-                    "tokenizer": "keyword",
-                    "filter": ["full_pinyin","lowercase","_pattern"]
-                }
-            },
-            "tokenizer": {
-                "prefix_pinyin": {
-                    "type": "pinyin",
-                    "first_letter": "prefix",
-                    "padding_char": ""
-                }
-            },
-            "filter": {
-                "_pattern":{
-                    "type":"pattern_replace",
-                    "pattern": "([\\W])",
-                    "replacement": ""
-                }
-                ,"only_pinyin": {
-                    "type": "pinyin",
-                    "first_letter": "only",
-                    "padding_char": ""
-                }
-                , "full_pinyin": {
-                    "type": "pinyin",
-                    "first_letter": "none",
-                    "padding_char": ""
-                }
-            }
-        }
-      ``` 
+    - Mapping 自动猜测
+    - Mapping 变更、reIndex
+    - Mapping 增加 
+    - Feild Type
+      > [Elasticsearch Reference [5.1] » Mapping » Field datatypes](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 
 - Search
   - bool
+    > [Elasticsearch Reference [master] » Query DSL » Compound queries » Bool Query](https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-bool-query.html) 
+    
 - Aggregations
 - 调用
-  - DSL
+  - ▲ DSL
+    > [Elasticsearch Reference [5.1] » Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) 
+    
   - Client
     - RESTful API
     - ElasticSearch.js
     - Java client
     - *SQL client*
+      - SQL → DSL 
+      > [Day4: 《将sql转换为es的DSL》](http://elasticsearch.cn/article/114)
+      
 - ★ 业务实践
   - [Bulk:更省时的批量操作](http://es.xiaoleilu.com/030_Data/55_Bulk.html)
   - [文档局部更新](http://es.xiaoleilu.com/030_Data/45_Partial_update.html)
-
+  
 ### 搜索实现
+> - [GitHub [MIT] : occultskyrong/zzone/doc/3.0_ElasticSearch/3.0_/ik+pinyin.md](https://github.com/occultskyrong/zzone/blob/master/doc/3.0_ElasticSearch/3.0_/ik%2Bpinyin.md)
+> - [GitHub [MIT] : diandainfo/ess_api/doc/elasticsearch/search/readme.md](https://github.com/diandainfo/ess_api/blob/master/doc/elasticsearch/search/readme.md)
+
 - 搜索建议
+  - 需求：
   - 基于前缀索引的建议
   - completion suggester
+  - 搜索建议的来源：搜索建议词库的维护
+    - 根据用户搜索行为进行分析
+      - A. 用户触发搜索行为后记录搜索结果日志
+      - B. 同时记录（埋点）用户行为
+        - 若用户点击“加入购物车”、或进入详情页进行查看，则说明该搜索结果满足用户期许，将该关键词搜索分+1
+        - 若用户二次搜索（再次输入关键词后重新触发了搜索行为），则说明该搜索结果不满足用户期许，该关键词不准确，搜索分-1
+        - 若用户（某个时间范围内）无任何动作（可能存在跳出行为），则判定同一上条
+      - C. 聚合所有关键词，合计搜索分
 - 关键词搜索
   - 基于分词的搜索
   - IK analyzer
@@ -164,4 +148,5 @@
   - 全文搜索
   - 日志分析
   - GEO
+  - 业务DB
 
