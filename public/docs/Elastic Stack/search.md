@@ -27,12 +27,14 @@
   > - 一个分布式的实时文档存储，每个字段 可以被索引与搜索
   > - 一个分布式实时分析搜索引擎
   > - 能胜任上百个服务节点的扩展，并支持 PB 级别的结构化或者非结构化数据
+  
 - NoSQL
   - 非关系、无级联
   - SQL转换
     - SQL转换为ES查询
     - 如何处理关联关系？
       - 例如订单和订单详情，将订单详情合并在订单的字段(非规范化你的数据)
+      
       > ▲ [Elasticsearch: 权威指南 » 数据建模 » 关联关系处理](http://106.186.120.253/preview/relations.html)
       
   - 面向文档：JSON
@@ -52,13 +54,14 @@
   
   - Document
     - 以下节选自《Elasticsearch 服务器开发(第2版)》 1.1.1小节，有改动
-    > *文档*（document）：索引和搜索时使用的主要数据载体，包含一个或多个存有数据的字段
-    > *字段*（field）：文档的一部分，包含名称和值两部分
-    > *词*（term）：一个搜索单元，表示文本中的一个词
-    > *标记*（token）：表示在字段文本中出现的词，由这个词的文本、开始和结束偏移量以及类型组成
+    
+    > - *文档*（document）：索引和搜索时使用的主要数据载体，包含一个或多个存有数据的字段
+    > - *字段*（field）：文档的一部分，包含名称和值两部分
+    > - *词*（term）：一个搜索单元，表示文本中的一个词
+    > - *标记*（token）：表示在字段文本中出现的词，由这个词的文本、开始和结束偏移量以及类型组成
     
   - Indices/Index
-    - > ▲ [倒排索引](http://es.xiaoleilu.com/052_Mapping_Analysis/35_Inverted_index.html)
+    > ▲ [倒排索引](http://es.xiaoleilu.com/052_Mapping_Analysis/35_Inverted_index.html)
     - Analyzer/Analysis
       > [分析和分析器](http://es.xiaoleilu.com/052_Mapping_Analysis/40_Analysis.html) 
       > [Elasticsearch Reference [5.1] » Analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html)
@@ -89,7 +92,8 @@
       - Character Filters
   - Mapping、Type
     - Index:Type 1:1
-      - > [Index vs. Type](https://www.elastic.co/blog/index-vs-type)
+      > [Index vs. Type](https://www.elastic.co/blog/index-vs-type)
+      
     - 货架商品的Mapping
     
       ```
