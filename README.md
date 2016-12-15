@@ -27,14 +27,14 @@
 |[虚拟DOM](./public/docs/virtual-dom/readme.md)|demo|60%|2016年11月11日|
 |[RequireJS](./public/docs/requireJS/readme.md)|demo|0|2016年12月6日|
 |[双向数据绑定](./public/docs/mvvm/readme.md)|document|0|2016年11月11日|
-|[ECMAScript 2016](./public/docs/ECMAScript 2016/readme.md)|demo|0|2016年12月1日|
+|[ECMAScript 2016](./public/docs/ECMAScript_2016/readme.md)|demo|0|2016年12月1日|
 |[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0|2016年12月1日|
-|[搜索实现的简单说明](./public/docs/Elastic Stack/search.md)|document|50|2016年12月8日|
+|[搜索实现的简单说明](./public/docs/Elastic_Stack/search.md)|document|50|2016年12月8日|
 |[接驳腾讯云 - 对象存储服务](./public/docs/Tencent/cos.md)|document|1|2016年12月13日|
 
 * 搬迁CSDN博客内容
 
 |搬迁自|搬迁后|更新日期|
 |:--|--:|--:|
-|[Bootstrap入门速成-效果概述](http://blog.csdn.net/occultskyrong/article/details/44966005)|[Bootstrap入门速成-效果概述](./public/docs/bootstrap/0-overview.md)|2016年9月29日|
+|[Bootstrap入门速成-效果概述](http://blog.csdn.net/occultskyrong/article/details/44966005)|[Bootstrap入门速成-效果概述](./public/docs/Bootstrap/0-overview.md)|2016年9月29日|
  

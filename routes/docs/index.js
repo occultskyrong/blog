@@ -7,10 +7,12 @@
 
 var router = require('express').Router();
 
-router.use('/bootstrap', require('./bootstrap'));
+router.use('/Bootstrap', require('./Bootstrap'));
+
+router.use('/Elastic_Stack', require('./Elastic_Stack'));
 
 router.get('/zbox', function (req, res) {
-    markdown.code(res,'zbox','./public/docs/zbox/readme.md');
+    markdown.code(res, 'zbox', './public/docs/zbox/readme.md');
 });
 
 module.exports = router;

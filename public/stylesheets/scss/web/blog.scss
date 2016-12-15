@@ -1,2 +1,23 @@
 @import "../component/frame";
 
+// 上、下横线
+
+@mixin container-pr($p) {
+  border: 1px #0cf dashed;
+  height: 20px;
+  margin: 15px -15px;
+  @if $p == top {
+    border-bottom: 0;
+  } @else {
+    border-top: 0;
+  }
+}
+
+.container-top-pr {
+  @include container-pr(top);
+}
+
+.container-bottom-pr {
+  @include container-pr(bottom);
+  margin-bottom: 20px;
+}

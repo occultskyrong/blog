@@ -16,6 +16,7 @@ module.exports = {
     , NAME: packageConfig['name']                   //项目名称
     , VERSION: packageConfig['version']             //项目版本
     , FORMAT: 'YYYY-MM-DD HH:mm:ss SSS'             //标准时间格式化参数
+    , _GIT_HUB_URL: 'https://github.com/occultskyrong/blog/tree/master/public'
     /**
      * 组装记录器的头部时间标记
      * @param t     tag,日志类型标记

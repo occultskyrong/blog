@@ -5,8 +5,16 @@
 <%- include ../../_base/header.ejs %>
 <div class="app-context container-fluid">
     <div class="container">
-        <h1><%= title %><small>Powered By <a target="_blank" href="<%=source%>"><%=source%></a></small></h1>
+        <h1><%= title %>
+            <small>Powered By <a target="_blank" href="<%= source %>"><%= source %></a></small>
+            <br>
+            <% var gitHubUrl = blog._GIT_HUB_URL + source; %>
+            <small>GitHub Link
+                <a target="_blank" href="<%= gitHubUrl %>"><%= gitHubUrl %></a></small>
+        </h1>
+        <hr class="container-top-pr">
         <%- markdown %>
+        <hr class="container-bottom-pr">
     </div>
 </div>
 <%- include ../../_base/javascript.ejs %>
