@@ -86,13 +86,13 @@
           
       - Tokenizers、Token Filters、Character Filters
       
-        > 分词器把文本分割成多个标记，基本就是词加上一些额外信息，比如该词在原始文本中的位置和长度。
-        > - 分词器的处理结果成为*标记流*（token stream），它是一个接一个的标记，准备被过滤器处理
+        > - 分词器把文本分割成多个标记，基本就是词加上一些额外信息，比如该词在原始文本中的位置和长度。
+        >   - 分词器的处理结果成为*标记流*（token stream），它是一个接一个的标记，准备被过滤器处理
         
-        > 标记过滤器用来处理标记流中的标记
+        > - 标记过滤器用来处理标记流中的标记
         
-        > 最后，字符映射器对未经分析的文本起作用，它们在分词器之前工作。
-        > - 因此，我们可以很容易地从文本的整体部分去除HTML标签而无需担心它们被标记
+        > - 最后，字符映射器对未经分析的文本起作用，它们在分词器之前工作。
+        >   - 因此，我们可以很容易地从文本的整体部分去除HTML标签而无需担心它们被标记
   
   - Mapping、Type
     - Index:Type 1:1
@@ -108,17 +108,19 @@
     > [Elasticsearch Reference [master] » Query DSL » Compound queries » Bool Query](https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-bool-query.html) 
     
 - Aggregations
-  > [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Sum Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-sum-aggregation.html) 
-  > [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Top hits Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-top-hits-aggregation.html)
-  > [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Value Count Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-valuecount-aggregation.html)
+  > - [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Sum Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-sum-aggregation.html) 
+  > - [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Top hits Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-top-hits-aggregation.html)
+  > - [Elasticsearch Reference [master] » Aggregations » Metrics Aggregations » Value Count Aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-aggregations-metrics-valuecount-aggregation.html)
   - 数据分析 
 - Suggester
-  > [Elasticsearch Reference [master] » Search APIs » Suggesters » Completion Suggester](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-completion.html) 
-  > [Elasticsearch Reference [master] » Search APIs » Suggesters » Term suggester](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-suggesters-term.html)
-  > [Elasticsearch Reference [master] » Search APIs » Suggesters » Context Suggester](https://www.elastic.co/guide/en/elasticsearch/reference/master/suggester-context.html) 
+  > - [Elasticsearch Reference [master] » Search APIs » Suggesters » Completion Suggester](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters-completion.html) 
+  > - [Elasticsearch Reference [master] » Search APIs » Suggesters » Term suggester](https://www.elastic.co/guide/en/elasticsearch/reference/master/search-suggesters-term.html)
+  > - [Elasticsearch Reference [master] » Search APIs » Suggesters » Context Suggester](https://www.elastic.co/guide/en/elasticsearch/reference/master/suggester-context.html) 
   - 快速建议（索引级）
 - _score
+
   > [Elasticsearch Reference [5.0] » Breaking changes » Breaking changes in 5.0 » Search and Query DSL changes » Default similarity](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_search_changes.html#_default_similarity) 
+  
 - 调用
   - ▲ DSL
     > [Elasticsearch Reference [5.1] » Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html) 
@@ -253,7 +255,7 @@
         - 分析协议、请求，响应延时
     - GEO
       - 基于deo信息的范围搜索
-    - *业务DB
-    - *运维监控
+    - *业务DB*
+    - *运维监控*
       - 各资源使用情况
 
