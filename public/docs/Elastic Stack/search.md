@@ -3,6 +3,7 @@
 - 以下：引用链接失效的，使用google 搜索关键词即可
 
 ## 参考资料
+- [elastic中文社区](http://elasticsearch.cn/)
 - [elastic/elasticsearch-definitive-guide](https://github.com/elastic/elasticsearch-definitive-guide)
 - [《Elasticsearch: 权威指南》](http://106.186.120.253/preview/foreword_id.html)
 - [Elasticsearch 权威指南（中文版）](http://es.xiaoleilu.com/)
