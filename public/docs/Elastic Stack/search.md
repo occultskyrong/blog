@@ -1,5 +1,6 @@
 
 # 搜索实现的简单说明
+- 以下：引用链接失效的，使用google 搜索关键词即可
 
 ## 参考资料
 - [elastic/elasticsearch-definitive-guide](https://github.com/elastic/elasticsearch-definitive-guide)
