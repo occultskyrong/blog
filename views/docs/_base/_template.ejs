@@ -6,11 +6,12 @@
 <div class="app-context container-fluid">
     <div class="container">
         <h1><%= title %>
-            <small>Powered By <a target="_blank" href="<%= source %>"><%= source %></a></small>
-            <br>
-            <% var gitHubUrl = blog._GIT_HUB_URL + source; %>
-            <small>GitHub Link
-                <a target="_blank" href="<%= gitHubUrl %>"><%= gitHubUrl %></a></small>
+            <small>
+                <a class="icon-git" target="_blank" href="<%= blog._GIT_HUB_URL + source %>"></a>
+                <span class="ml-1e">
+                    Powered By<a target="_blank" href="<%= source %>"><%= source %></a>
+                </span>
+            </small>
         </h1>
         <hr class="container-top-pr">
         <%- markdown %>

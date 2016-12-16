@@ -29,23 +29,11 @@
   .container {
     h1 {
       small {
-        margin-top: 15px;
         float: right;
         font-size: 18px;
+        padding-top: 10px;
       }
     }
-  }
-}
-
-//*-date的样式mixin
-@mixin base-date { //时间选择器
-  padding: 10px;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
-  text-align: center;
-  .query-submit {
-    margin-left: 3em;
-    width: 140px;
   }
 }
 
@@ -55,4 +43,24 @@
   margin-top: 50px;
   color: #767676;
   border-top: 1px solid #e5e5e5;
+}
+
+@mixin icon-x($iu) {
+  line-height: 34px;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background-image: url($iu);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 34px 34px;
+}
+
+// git的icon
+.icon-git {
+  @include icon-x('/image/icon/github.png');
+  &:hover {
+    background-image: url('/image/icon/github_hover.png');
+  }
 }

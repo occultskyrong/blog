@@ -7,6 +7,9 @@
 
 var router = require('express').Router();
 
+// docs - 首页
+router.use('/', require('./home'));
+
 router.use('/Bootstrap', require('./Bootstrap'));
 
 router.use('/Elastic_Stack', require('./Elastic_Stack'));

@@ -1,6 +1,6 @@
 <%- include ../_base/head.ejs %>
 <%- include ../_base/css.ejs %>
-    <link rel="stylesheet" href="/stylesheets/css/web/home.web.css">
+<link rel="stylesheet" href="/stylesheets/css/web/home.web.css">
 <%- include ../_base/container.ejs %>
 <%- include ../_base/header.ejs %>
 <div class="app-context container-fluid">
@@ -8,20 +8,12 @@
         <h1>blog.sky91.cn</h1>
     </div>
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-1">
             <%- include ../_base/_clock.canvas.ejs %>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="mg-0">网站信息</h4>
-                </div>
-                <div class="panel-body">
-                    <ol>
-                        <li>
-                            <a target="_blank"
-                               href="https://github.com/occultskyrong/blog">GitHub地址</a>
-                        </li>
-                    </ol>
-                </div>
+            <div class="git-icon">
+                <a href="//github.com/occultskyrong/blog" target="_blank">
+                    <i class="icon-git"></i>
+                </a>
             </div>
         </div>
         <div class="col-lg-8">
@@ -35,16 +27,7 @@
             </div>
         </div>
         <%- include ./module/doc.ejs %>
-        <div class="col-lg-2">
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h5 class="mg-0">Demo列表</h5>
-                </div>
-                <div class="panel-body">
-                    <%- demo %>
-                </div>
-            </div>
-        </div>
+        <%- include ./module/demo.ejs %>
     </div>
 </div>
 <%- include ../_base/javascript.ejs %>

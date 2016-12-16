@@ -42,35 +42,6 @@
   clear: both;
 }
 
-/* font-family */
-.ff-a {
-  font-family: Arial, sans-serif;
-}
-
-.ff-t {
-  font-family: Tahoma, sans-serif;
-}
-
-.ff-v {
-  font-family: Verdana, sans-serif;
-}
-
-.ff-s {
-  font-family: Simsun, sans-serif;
-}
-
-.ff-l {
-  font-family: 'Lucida Console', sans-serif;
-}
-
-.ff-w {
-  font-family: 'Microsoft Yahei', sans-serif;
-}
-
-.ff-skk {
-  font-family: STKaiti, KaiTi, SimSun, sans-serif;
-}
-
 /* text-align */
 .ta-c {
   text-align: center;
@@ -132,10 +103,6 @@
   padding: 0;
 }
 
-.lst-n {
-  list-style-type: none;
-}
-
 /* width */
 @for $i from 1 through 10 {
   $px: $i*10;
@@ -148,62 +115,7 @@
 }
 
 //去除li的点
-
-/* —————— todo 待整理 —————— */
-a:focus {
-  outline: none
+.lst-n {
+  list-style-type: none;
 }
-
-.title-text {
-  font-size: 20px;
-  font-weight: bold
-}
-
-.price-em-gray:before {
-  content: "¥";
-  color: #999;
-}
-
-.price-em:before {
-  content: "¥";
-  color: #ff0042;
-}
-
-.price-em-black:before {
-  content: "¥";
-  color: #333;
-}
-
-.font-red {
-  color: #ff0142;
-}
-
-.font-gray {
-  color: #999;
-}
-
-.font-black {
-  color: #000;
-}
-
-.font-overflow {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.bg-gray {
-  background: #888;
-}
-
-.NSimSun {
-  font-family: "新宋体";
-  font-size: 12px;
-}
-
-.YaHei-Regular {
-  font-family: "微软雅黑 Regular";
-  font-weight: bold;
-}
-
 
