@@ -12,11 +12,6 @@ var router = require('express').Router()
 
 // docs - 首页
 router.get('/', function (req, res) {
-    // 获取文档列表 
-    var getFileList=function () {
-        
-    };
-    
     res.render('./docs/home/view', {
         title: '文档列表'
         , list: ''

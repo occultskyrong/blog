@@ -31,6 +31,7 @@
 |[数据可视化](./public/docs/big-data/data-visualization.md)|demo|0|2016年12月1日|
 |[搜索实现的简单说明](./public/docs/Elastic_Stack/search.md)|document|50%|2016年12月8日|
 |[接驳腾讯云 - 对象存储服务](./public/docs/Tencent/cos.md)|document|1%|2016年12月13日|
+|[文档列表](./docs/home)|module|1%|2016年12月16日|
 
 * 搬迁CSDN博客内容
 
