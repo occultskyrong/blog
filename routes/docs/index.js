@@ -8,7 +8,7 @@
 var router = require('express').Router();
 
 // docs - 首页
-router.use('/', require('./home'));
+router.use('/home', require('./home'));
 
 router.use('/Bootstrap', require('./Bootstrap'));
 
