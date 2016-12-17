@@ -12,10 +12,12 @@ var log4js = require('../log4j')
     , packageConfig = require('../../package.json');
 
 module.exports = {
-    ENV: process.env.NODE_ENV || "development"      //全局变量
-    , NAME: packageConfig['name']                   //项目名称
-    , VERSION: packageConfig['version']             //项目版本
-    , FORMAT: 'YYYY-MM-DD HH:mm:ss SSS'             //标准时间格式化参数
+    ENV: process.env.NODE_ENV || "development"      // 全局变量
+    , NAME: packageConfig['name']                   // 项目名称
+    , VERSION: packageConfig['version']             // 项目版本
+    , _DATE_FORMAT: 'YYYY-MM-DD'                    // 标准日期格式化参数
+    , FORMAT: 'YYYY-MM-DD HH:mm:ss SSS'             // 标准时间格式化参数
+    , _TIME_FORMAT: 'YYYY-MM-DD HH:mm:ss'           // 标准时间格式化参数
     , _GIT_HUB_URL: 'https://github.com/occultskyrong/blog/tree/master/public'
     /**
      * 组装记录器的头部时间标记
