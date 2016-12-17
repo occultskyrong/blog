@@ -6,6 +6,8 @@
 
 "use strict";
 
-var fs=require('./index');
+var fs = require('./index');
 
-console.info(fs.getFileList('../../public/docs'));
+global.blog=require('../global');
+
+console.info(fs.list2Table(fs.getFileList('../../public/docs')));

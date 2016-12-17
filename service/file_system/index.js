@@ -6,14 +6,14 @@
 
 "use strict";
 
+/* globals blog */
+
 var fs = require('fs')
     , moment = require('moment')
     , pathModule = require('path')
     , path = function (__) {
     return pathModule.join(__dirname, __);
 };
-
-var blog = require('../global')
 
 var Utils = {
     // 文件大小的计算
@@ -25,7 +25,28 @@ var Utils = {
                 return parseFloat(size / 1024).toFixed(2) + 'kb';
             }
         } else {
-            return size + "b";
+            return size ? size + "b" : 0;
+        }
+    }
+    // 时间格式化函数
+    , format: function (t) {
+        return moment(t).format(blog._TIME_FORMAT);
+    }
+    // 根据文件扩展名
+    , ext: function (fName) {
+        var _ea = fName.split('.');
+        if (_ea && _ea.length > 0) {
+            var _eName = _ea[1];
+            switch (_eName) {
+                case 'js':
+                    return 'JavaScript';
+                case 'md':
+                    return 'Markdown';
+                default :
+                    return '鬼知道是什么文件';
+            }
+        } else {
+            return '未知类型';
         }
     }
 };
@@ -33,27 +54,24 @@ var Utils = {
 module.exports = {
     // 深度优先遍历
     getFileList: function (_path) {
-        var _ = {}                              // 返回结果集
-            , _format = function (t) {          // 时间格式化函数
-                return moment(t).format(blog._TIME_FORMAT)
-            }
-            ;
-
         // 文件类
-        var File = function (p, fn) {
-            this.size =Utils.size(p.size);
-            this.createAt = _format(p.birthtime);
-            this.updateAt = _format(p.ctime);
-            this.type = 'File';
+        var File = function (p, fn, __) {
+            this.size = Utils.size(p.size);
+            this.createAt = Utils.format(p.birthtime);
+            this.updateAt = Utils.format(p.ctime);
+            this.target = 'File';
+            this.type = Utils.ext(fn);
             this.name = fn;
+            this.path = __;
         };
 
         // 文件夹类
-        var Dir = function (d) {
-            this.createAt = _format(p.birthtime);
-            this.updateAt = _format(p.ctime);
-            this.type='Folder';
-            this.name=fn;
+        var Dir = function (d, dn, child) {
+            this.createAt = Utils.format(d.birthtime);
+            this.updateAt = Utils.format(d.ctime);
+            this.target = 'Folder';
+            this.name = dn;
+            this.child = child;
         };
 
         // 过滤ignore文件
@@ -74,20 +92,63 @@ module.exports = {
                         ;
                     // 如果是文件夹,则继续深入
                     if (_stat.isDirectory()) {
-                        rds(__);
+                        _fs.push(new Dir(_stat, fn, rds(__)));
                     } else if (_stat.isFile()) {// 文件,则返回文件类
-                        console.info(__)
-                        _fs.push(new File(_stat, fn));
+                        _fs.push(new File(_stat, fn, __));
                     }
                 }
             }
             return _fs;
         };
         // 深度优先读取文件列表
-        rds(_path);
-        //TODO 判断文件夹或文件
-        //TODO 组织结构
-        //TODO
-        return _;
+        return rds(_path);
+    }
+    // 转换 - 文档列表结构 - 到 - table结构
+    , list2Table: function (fileList) {
+        /**
+         * 生成tr的attribute属性值
+         * @param pid           parent_id，父元素的id
+         * @param index         索引号
+         */
+        var trAtt = function (pid, index) {
+            return 'data-tt-id="' + (pid ? pid + '-' + index : index) + '"' +
+                (pid ? ' data-tt-parent-id="' + pid + '"' : '');
+        };
+
+        /**
+         * 生成 table/tr
+         * @param list          当前深度列表
+         * @param parent_id     父元素id
+         * @returns {string}
+         */
+        var setT = function (list, parent_id) {
+            parent_id = parent_id || '';
+            var str = '';
+            for (var l = 0, len = list.length; l < len; l++) {
+                var ll = list[l];
+                if (ll.target === 'File') {
+                    str += '<tr ' + trAtt(parent_id, 1 + l) + '>' +
+                        '<td><span class="file">' +
+                        '<a href="' + ll.path.split('../../public')[1] + '">' + ll.name + '</a>' +
+                        '</span></td>' +
+                        '<td>' + ll.createAt + '</td>' +
+                        '<td>' + ll.updateAt + '</td>' +
+                        '<td>' + ll.type + '</td>' +
+                        '<td>' + ll.size + '</td>' +
+                        '</tr>';
+                } else if (ll.target === 'Folder') {
+                    str += '<tr ' + trAtt(parent_id, 1 + l) + '>' +
+                        '<td><span class="folder">' + ll.name + '</span></td>' +
+                        '<td>' + ll.createAt + '</td>' +
+                        '<td>' + ll.updateAt + '</td>' +
+                        '<td>' + ll.target + '</td>' +
+                        '<td>-</td>' +
+                        '</tr>';
+                    str += setT(ll.child, parent_id ? parent_id + '-' + (1 + l) : (1 + l));
+                }
+            }
+            return str;
+        };
+        return setT(fileList);
     }
 };

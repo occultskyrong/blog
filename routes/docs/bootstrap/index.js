@@ -9,7 +9,7 @@ var router = require('express').Router();
 
 // bootstrap - 概述
 router.get('/overview', function (req, res) {
-    markdown.render(res, null, 'BootStrap - 概述', './public/docs/Bootstrap/0-overview.md');
+    markdown.render(res, null, 'BootStrap - 概述', './public/docs/Bootstrap/overview.md');
 });
 
 module.exports = router;

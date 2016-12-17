@@ -1,12 +1,39 @@
 <%- include ../../_base/head.ejs %>
 <%- include ../../_base/css.ejs %>
 <link rel="stylesheet" href="/stylesheets/css/web/blog.css">
-<%- include ../../_base/container.ejs %>
+<link href="//cdn.bootcss.com/jquery-treetable/3.2.0/css/jquery.treetable.theme.default.min.css"
+      rel="stylesheet"><%- include ../../_base/container.ejs %>
 <%- include ../../_base/header.ejs %>
 <div class="app-context container-fluid">
     <div class="container">
-        <h1><%= title %></h1>
+        <h1><%= title %>
+            <small>
+                Code On <a class="icon-git" target="_blank"
+                   href="https://github.com/occultskyrong/blog/blob/master/service/file_system/index.js">
+                </a>
+            </small>
+        </h1>
+        <div class="col-lg-12">
+            <table id="docs_file_list">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>类型</th>
+                    <th>大小</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%- fileList %>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <%- include ../../_base/javascript.ejs %>
+<script src="//cdn.bootcss.com/jquery-treetable/3.2.0/jquery.treetable.min.js"></script>
+<script>
+    $('#docs_file_list').treetable();
+</script>
 <%- include ../../_base/footer.ejs %>

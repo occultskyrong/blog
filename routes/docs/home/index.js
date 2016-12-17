@@ -7,14 +7,17 @@
 "use strict";
 
 var router = require('express').Router()
-    , fs = require('fs')
     ;
+
+var file_system_service = require('../../../service/file_system');
 
 // docs - 首页
 router.get('/', function (req, res) {
     res.render('./docs/home/view', {
         title: '文档列表'
-        , list: ''
+        , fileList: file_system_service
+            .list2Table(file_system_service
+                .getFileList('../../public/docs'))
     });
 });
 
