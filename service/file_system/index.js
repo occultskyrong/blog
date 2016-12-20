@@ -126,10 +126,13 @@ module.exports = {
             var str = '';
             for (var l = 0, len = list.length; l < len; l++) {
                 var ll = list[l];
-                if (ll.target === 'File') {
+                if (ll.target === 'File') { // 当标记为文件时
+                    // 获取文件地址；若为md文档，直接查看对应的页面
+                    var _aArr = ll.path.split('../../public')[1]
+                        , _a = ll.type == 'Markdown' ? _aArr.split('.md')[0] : _aArr;
                     str += '<tr ' + trAtt(parent_id, 1 + l) + '>' +
                         '<td><span class="file">' +
-                        '<a href="' + ll.path.split('../../public')[1] + '">' + ll.name + '</a>' +
+                        '<a href="' + _a + '">' + ll.name + '</a>' +
                         '</span></td>' +
                         '<td>' + ll.createAt + '</td>' +
                         '<td>' + ll.updateAt + '</td>' +

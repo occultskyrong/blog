@@ -19,4 +19,18 @@
     </div>
 </div>
 <%- include ../../_base/javascript.ejs %>
+<script>
+    $(function () {
+        var $tes = $('table');
+        if ($tes.length > 0) {
+            $tes.each(function (key) {
+                var $t = $tes.eq(key);
+                // header添加底色
+                $t.find('thead tr').addClass('bg-primary');
+                // 格式化所有table
+                $t.addClass('table table-bordered table-condensed table-hover')
+            });
+        }
+    });
+</script>
 <%- include ../../_base/footer.ejs %>
