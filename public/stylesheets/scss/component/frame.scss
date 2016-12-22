@@ -45,6 +45,11 @@
   border-top: 1px solid #e5e5e5;
 }
 
+#uyan_frame {
+  margin-left: 35%;
+  margin-top: 2em;
+}
+
 @mixin icon-x($iu) {
   line-height: 34px;
   display: inline-block;

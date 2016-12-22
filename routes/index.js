@@ -23,7 +23,6 @@ router.get('/error', function (req, res) {
     });
 });
 
-
 // 拦截登录请求
 router.use('/login', require('./login'));
 
