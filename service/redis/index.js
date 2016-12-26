@@ -6,53 +6,23 @@
 
 "use strict";
 
-global.blog={ENV : 'test',eLog:function () {
-    console.info(arguments[0])
-}};
-
 let redis = require('redis');
 let config = require('../../config').redis;
 
-/**
- * 通用回调
- * @param err       错误
- * @param reply     返回值
- */
-let call=function (err,reply) {
-    if(err){
-        blog.eLog(err);
-    }else{
-
-    }
-};
-console.info(config)
-
 class Client {
     constructor() {
-        let client= redis.createClient(
+        let client = redis.createClient(
             config.port
             , config.host
             , {
                 db: config.db
                 , ttl: config.ttl
             });
-        client.on('error',function () {
-            console.error(arguments)
+        client.on('error', function (err) {
+            blog.eLog(err);
         });
-        this.client=client;
-    }
-    get(key,callback){
-        this.client.get(key,call);
+        this.client = client;
     }
 }
 
 module.exports = Client;
-
-let client = new Client().client;
-
-client.set('a',1,function () {
-    console.info(arguments)
-});
-client.get('a',function () {
-    console.info(arguments)
-});
