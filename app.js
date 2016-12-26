@@ -20,7 +20,7 @@ global.blog = require('./service/global');
 global.markdown = require('./service/markdown');
 
 // 配置
-var config = require('./config')();
+var config = require('./config');
 
 //创建项目实例
 var app = express();

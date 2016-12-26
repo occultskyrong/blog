@@ -18,6 +18,16 @@ var _ = {
             "ttl": 86000
         }
     }
+    , test: {
+        port: 3000
+        , host: 'localhost'
+        , redis: {
+            "host": "localhost",
+            "port": 6379,
+            "db": 6,
+            "ttl": 86000
+        }
+    }
     , production: {
         port: 80
         , host: '45.124.67.111'
@@ -31,6 +41,4 @@ var _ = {
 };
 
 // 根据环境获取配置
-module.exports = function () {
-    return _[blog.ENV];
-};
+module.exports = _[blog.ENV];
