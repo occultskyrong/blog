@@ -12,7 +12,7 @@
  * @param {number} y
  * @return {number}
  */
-var hammingDistance = function (x, y) {
+var hammingDistance1 = function (x, y) {
     let _x = x.toString(2)
         , _y = y.toString(2)
         , count = 0, max, min, mii = 0
@@ -40,6 +40,15 @@ var hammingDistance = function (x, y) {
     return count;
 };
 
+
+// 终极解决方案
+var hammingDistance2 = function (x, y) {
+    return (x ^ y).toString(2).replace(/0/g, '').length;
+};
+
+var hammingDistance = (x, y)=> {
+    console.info(hammingDistance2(x, y));
+};
 
 hammingDistance(1, 3);
 hammingDistance(4, 14);
