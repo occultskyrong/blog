@@ -8,14 +8,12 @@
 
 /* globals blog */
 
-var fs = require('fs')
+const fs = require('fs')
     , moment = require('moment')
     , pathModule = require('path')
-    , path = function (__) {
-    return pathModule.join(__dirname, __);
-};
+    , path = (__)=>pathModule.join(__dirname, __);
 
-var Utils = {
+const Utils = {
     // 文件大小的计算
     size: function (size) {
         if (size > 1024) {
@@ -36,14 +34,14 @@ var Utils = {
     , ext: function (fName) {
         var _ea = fName.split('.');
         if (_ea && _ea.length > 0) {
-            var _eName = _ea[1];
+            var _eName = _ea[_ea.length - 1];
             switch (_eName) {
                 case 'js':
                     return 'JavaScript';
                 case 'md':
                     return 'Markdown';
                 default :
-                    return '鬼知道是什么文件';
+                    return '-_-! 鬼知道是什么文件';
             }
         } else {
             return '未知类型';
