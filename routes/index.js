@@ -35,7 +35,6 @@ router.use(function (req, res, next) {
 router.use('/api', require('./api'));       // api请求
 router.use('/docs', require('./docs'));     // docs文档请求
 router.use('/demo', require('./demo'));     // demo请求
-router.use('/m', require('./mobile'));      // 移动端页面
 router.use('/', require('./web'));          // web页面请求
 
 // 拦截所有错误请求

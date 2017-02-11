@@ -10,7 +10,7 @@
 var _ = {
     development: {
         port: 3000
-        , host: 'localhost'
+        , host: '192.168.1.92'
         , redis: {
             "host": "192.168.1.101",
             "port": 6379,

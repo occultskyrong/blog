@@ -32,7 +32,7 @@ if (blog.ENV === "development") {//开发环境关闭模板缓存
     app.set('view cache', true);
 }
 app.use(favicon(__dirname + '/public/favicon.ico'));//定义icon图标
-app.use(bodyParser.json({limit: '50mb'}));//定义数据解析器为json并设置解析器最大值，即Content-Type → application/json
+app.use(bodyParser.json({limit: '1mb'}));//定义数据解析器为json并设置解析器最大值，即Content-Type → application/json
 app.use(bodyParser.urlencoded({extended: true}));//定义url编码方式
 app.use(cookieParser());//定义cookie解析器
 app.use(express.static(path.join(__dirname, 'public')));//定义静态文件目录
@@ -49,7 +49,7 @@ app.use(session({//连接redis
 }));
 
 
-//启动项目，监听30012端口
+//启动项目，监听3000端口
 app.listen(config['port'] || 3000, config['host'] || 'localhost', function () {
     blog.log('blog - 项目启动 ,  当前环境:' + blog.ENV + ',  监听host:' + config['host'] + ',  监听端口:' + config['port']);
 });
