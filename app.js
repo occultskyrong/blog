@@ -6,7 +6,7 @@
 "use strict";
 
 // 加载modules
-var express = require('express')
+const express = require('express')
     , path = require('path')
     , favicon = require('serve-favicon')
     , session = require("express-session")
@@ -20,10 +20,10 @@ global.blog = require('./service/global');
 global.markdown = require('./service/markdown');
 
 // 配置
-var config = require('./config');
+const config = require('./config');
 
 //创建项目实例
-var app = express();
+const app = express();
 app.set('views', path.join(__dirname, 'views'));//定义前端模板的路径
 app.set('view engine', 'ejs');//定义前端模板
 if (blog.ENV === "development") {//开发环境关闭模板缓存

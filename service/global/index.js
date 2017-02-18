@@ -41,6 +41,7 @@ module.exports = {
      * @param req
      */
     , http: function (req) {
+        //fixme 记录访问标记
         logger('http').info('ip:' + this.getCip(req)
             + ';  url:' + req.url
             + ';  method:' + req.method
