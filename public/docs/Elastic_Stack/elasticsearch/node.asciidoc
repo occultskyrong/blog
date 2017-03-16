@@ -101,18 +101,22 @@ cluster health to have a stable master node.
 Any master-eligible node (all nodes by default) may be elected to become the
 master node by the <<modules-discovery-zen,master election process>>.
 
-任何（有选举资格的）主节点（默认所有的节点）都可以通过
- `modules-discovery-zen,master election process` 选举成为主节点。
-
+任何（有选举资格的）主节点（默认所有的节点）都可以通过 `master election process`
+（选主协议/算法）选举成为主节点。
 
 IMPORTANT: Master nodes must have access to the `data/` directory (just like
 `data` nodes) as this is where the cluster state is persisted between node restarts.
+
+重要提示: 主节点必须访问 `data/` 目录（就像 `data` 节点一样），
+因为这是集群状态在节点重新启动之间持久化的地方
 
 Indexing and searching your data is CPU-, memory-, and I/O-intensive work
 which can put pressure on a node's resources. To ensure that your master
 node is stable and not under pressure, it is a good idea in a bigger
 cluster to split the roles between dedicated master-eligible nodes and
 dedicated data nodes.
+
+
 
 While master nodes can also behave as <<coordinating-node,coordinating nodes>>
 and route search and indexing requests from clients to data nodes, it is
