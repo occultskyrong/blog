@@ -3,24 +3,33 @@
 <body>
 <div class="ap-container">
     <div class="container-header">
-
+        
     </div>
     <div class="container-context">
         <form>
             <div class="row">
-                <div class="medium-6 columns">
-                    <label>姓名
-                        <input type="text" placeholder="麻烦您告诉我您的名字">
-                    </label>
+                <div class="small-3 columns">
+                    <label for="middle-label" class="text-right middle">姓名</label>
                 </div>
-                <div class="medium-6 columns">
-                    <label>Input Label
-                        <input type="text" placeholder=".medium-6.columns">
-                    </label>
+                <div class="small-9 columns">
+                    <input type="text" id="middle-label" placeholder="麻烦告诉我您的名字">
                 </div>
+            </div>
+            <div class="row">
+                <fieldset class="large-6 columns">
+                    <legend>是否入宴</legend>
+                    <input type="radio" name="pokemon" value="yes" id="is_feast_yes" required>
+                    <label for="is_feast_yes">是</label>
+                    <input type="radio" name="pokemon" value="no" id="is_feast_no">
+                    <label for="is_feast_no">否</label>
+                </fieldset>
+            </div>
+            <div class="row">
+
             </div>
         </form>
     </div>
 </div>
 </body>
+<%- include ../_base/js.jquery.ejs%>
 <%- include ../_base/js.foundation.ejs %>

@@ -26,11 +26,7 @@ const config = require('./config');
 const app = express();
 app.set('views', path.join(__dirname, 'views'));//定义前端模板的路径
 app.set('view engine', 'ejs');//定义前端模板
-if (blog.ENV === "development") {//开发环境关闭模板缓存
-    app.set('view cache', false);
-} else {//生产环境开启模板缓存
-    app.set('view cache', true);
-}
+app.set('view cache', blog.ENV === "production");// 生产环境开启模板缓存
 app.use(favicon(__dirname + '/public/favicon.ico'));//定义icon图标
 app.use(bodyParser.json({limit: '1mb'}));//定义数据解析器为json并设置解析器最大值，即Content-Type → application/json
 app.use(bodyParser.urlencoded({extended: true}));//定义url编码方式

@@ -5,6 +5,25 @@
 
 "use strict";
 
-var router=require('express').Router();
+var router = require('express').Router();
 
-module.exports=router;
+// 登录 - 页面
+router.get('/', (req, res)=> {
+    return res.render('./login/view.ejs',{
+        title:'登录'
+    });
+});
+
+// 登录 - 发送请求
+
+// 登录 - 退出登录
+router.get('/off', (req, res)=> {
+    if ('session' in req) {
+        req.session.destory();
+    } else {
+        blog.error();
+    }
+    return res.redirect('/');
+});
+
+module.exports = router;
