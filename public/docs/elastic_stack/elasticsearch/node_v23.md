@@ -1,19 +1,24 @@
-[[modules-node]]
-== Node
 
-Any time that you start an instance of Elasticsearch, you are starting a
-_node_. A collection of connected nodes is  called a
-<<modules-cluster,cluster>>. If you are running a single node of Elasticsearch,
-then you have a cluster of one node.
+## 非版权原作者，感谢 `ElasticSearch` 团队
+- 原文查看[elasticsearch/docs/reference/modules/node.asciidoc][modules_node_asciidoc]
+- 官方文档地址[Elasticsearch Reference [2.3] » Modules » Node][modules_node_es]
+
+***
+
+## Node
+
+Any time that you start an instance of Elasticsearch, you are starting a _node_.
+A collection of connected nodes is  called a [`cluster`][modules_cluster].
+If you are running a single node of Elasticsearch,then you have a cluster of one node.
 
 - 每当你启动Elasticsearch的实例时，都会启动一个node（节点）。
 - 连接节点的集合称为“集群”。
 - 如果你正在运行Elasticsearch的单个节点，那么你有一个拥有一个节点的集群。
 
-Every node in the cluster can handle <<modules-http,HTTP>> and
-<<modules-transport,Transport>> traffic by default. The transport layer
+Every node in the cluster can handle [`HTTP`][modules_http] and
+[`Transport`][modules_transport] traffic by default. The transport layer
 is used exclusively for communication between nodes and the
-{javaclient}/transport-client.html[Java `TransportClient`]; the HTTP layer is
+[`Java TransportClient`][transport_client]; the HTTP layer is
 used only by external REST clients.
 
 - 默认情况下，集群中的每个节点都可以处理HTTP（请求）和Transport（数据传输）。
@@ -29,7 +34,7 @@ purpose:
 
 -
 
-<<master-node,Master-eligible node>>:: 备选主节点
+### `Master-eligible node` 备选主节点
 
 A node that has `node.master` set to `true` (default), which makes it eligible
 to be <<modules-discovery-zen,elected as the _master_ node>>, which controls
@@ -37,7 +42,7 @@ the cluster.
 
 `node.master` 设置为true的节点，它使其（该节点）有资格被选为主节点，从而控制集群。
 
-<<data-node,Data node>>:: 数据节点
+### `Data node` 数据节点
 
 A node that has `node.data` set to `true` (default). Data nodes hold data and
 perform data related operations such as CRUD, search, and aggregations.
@@ -45,7 +50,7 @@ perform data related operations such as CRUD, search, and aggregations.
 `node.data` 设置为true（默认）的节点。
 数据节点保存数据并执行数据相关操作，如CRUD，搜索和聚合。（基本上所有的请求都可以完成）
 
-<<ingest,Ingest node>>::
+### `Ingest node`
 录入节点
 
 A node that has `node.ingest` set to `true` (default). Ingest nodes are able
@@ -58,7 +63,7 @@ sense to use dedicated ingest nodes and to mark the master and data nodes as
 录入节点能够对文档应用接收管道，一般在索引之前进行转换和丰富文档。
 当有大量录入负载时，使用专门的录入节点，并将主节点和数据节点的 `node.ingest` 标记为 `false` 是有意义的。
 
-<<modules-tribe,Tribe node>>::
+### [`Tribe node`]
 部落节点
 
 A tribe node, configured via the `tribe.*` settings, is a special type  of
@@ -76,45 +81,37 @@ separating dedicated master-eligible nodes from dedicated data nodes.
 默认情况下，一个节点同时是主节点和数据节点，再加上它可以通过入口管道（logstash）来预处理文档。
 这（种情况）对于小集群非常方便，但随着集群的增长，考虑将专用主节点与专用数据节点分离将变的越来越重要。
 
-[NOTE]
-[[coordinating-node]]
-.Coordinating node 协调节点
-===============================================
 
-Requests like search requests or bulk-indexing requests may involve data held
+> ## coordinating-node
+  ##### 协调节点
+
+> Requests like search requests or bulk-indexing requests may involve data held
 on different data nodes. A search request, for example, is executed in two
 phases which are coordinated by the node which receives the client request --
 the _coordinating node_.
-
 - 诸如搜索、批量索引的请求可能涉及存储在不同的数据节点上的数据。
-- 例如，搜索请求在由接受客户端请求的（协调）节点中分为两个阶段执行，
+- 例如，搜索请求在由接受客户端请求的（协调）节点中分为两个阶段执行。
 
-In the _scatter_ phase, the coordinating node forwards the request to the data
+> In the _scatter_ phase, the coordinating node forwards the request to the data
 nodes which hold the data.  Each data node executes the request locally and
 returns its results to the coordinating node. In the _gather_  phase, the
 coordinating node reduces each data node's results into a single global
 resultset.
-
 - 在`scatter`（分散、分离）阶段，协调节点将请求转发到保存数据的数据节点。
 - 每个数据节点在（节点）本地执行请求并将结果返回给协调节点。
 - 在`gather`（合并、聚集）阶段，协调节点将每个数据节点的结果简化（合并）为单个全局结果集
 
-Every node is implicitly a coordinating node. This means that a node that has
+> Every node is implicitly a coordinating node. This means that a node that has
 all three `node.master`, `node.data` and `node.ingest` set to `false` will
 only act as a coordinating node, which cannot be disabled. As a result, such
 a node needs to have enough memory and CPU in order to deal with the gather
 phase.
-
 - 每个节点隐含的是协调节点。
 - 这意味着将 `node.master` 、 `node.data` 和 `node.ingest` 三个值全部设置为 `false`
 的节点将只作为协调节点，不能禁用。
 - 因此，这样的节点需要具有足够的内存和CPU以便处理`gather`阶段
 
-===============================================
-
-[float]
-[[master-node]]
-=== Master Eligible Node 备选主节点
+### `Master Eligible Node` 备选主节点
 
 The master node is responsible for lightweight cluster-wide actions such as
 creating or deleting an index, tracking which nodes are part of the cluster,
@@ -161,12 +158,12 @@ To create a standalone master-eligible node, set:
 
 要创建专用主节点，设置如下:
 
-[source,yaml]
--------------------
+```
 node.master: true <1>
 node.data: false <2>
 node.ingest: false <3>
--------------------
+```
+
 <1> The `node.master` role is enabled by default.
 <2> Disable the `node.data` role (enabled by default).
 <3> Disable the `node.ingest` role (enabled by default).
@@ -175,9 +172,7 @@ node.ingest: false <3>
 - 关闭 `node.data` 角色，默认开启
 - 关闭 `node.ingest` 角色，默认开启
 
-[float]
-[[split-brain]]
-==== Avoiding split brain with `minimum_master_nodes`
+#### Avoiding split brain with `minimum_master_nodes`
 避免因 `minimum_master_nodes` 发生“脑裂”
 
 To prevent data loss, it is vital to configure the
@@ -230,10 +225,9 @@ This setting should be set to a _quorum_ of master-eligible nodes:
 In other words, if there are three master-eligible nodes, then minimum master
 nodes should be set to `(3 / 2) + 1` or `2`:
 
-[source,yaml]
-----------------------------
+```
 discovery.zen.minimum_master_nodes: 2 <1>
-----------------------------
+```
 <1> Defaults to `1`.
 
 换句话说，如果有三个备选主节点，则 `minimum_master_nodes` 值应设置为 (3/2)+1=2 。
@@ -244,29 +238,24 @@ This setting can also be changed dynamically on a live cluster with the
 
 还可以使用集群设置更新api在活动集群上动态更改此设置
 
-[source,js]
-----------------------------
+```
 PUT _cluster/settings
 {
   "transient": {
     "discovery.zen.minimum_master_nodes": 2
   }
 }
-----------------------------
-// CONSOLE
-// TEST[catch:/cannot set discovery.zen.minimum_master_nodes to more than the current master nodes/]
+```
 
-TIP: An advantage of splitting the master and data roles between dedicated
+> TIP: An advantage of splitting the master and data roles between dedicated
 nodes is that you can have just three master-eligible nodes and set
 `minimum_master_nodes` to `2`. You never have to change this setting, no
 matter how many dedicated data nodes you add to the cluster.
 
-在专用节点之间分离主节点和数据节点的优点是 : 当你只有三个备选主节点时，
+> 在专用节点之间分离主节点和数据节点的优点是 : 当你只有三个备选主节点时，
 将 `minimum_master_nodes` 设置为2。无论（以后）你添加多少专用数据节点到集群中，都不必更改此设置。
 
-[float]
-[[data-node]]
-=== Data Node
+### Data Node 数据节点
 
 Data nodes hold the shards that contain the documents you have indexed. Data
 nodes handle data related operations like CRUD, search, and aggregations.
@@ -284,19 +273,16 @@ master and data roles.
 
 To create a dedicated data node, set:
 
-[source,yaml]
--------------------
+```
 node.master: false <1>
 node.data: true <2>
 node.ingest: false <3>
--------------------
+```
 <1> Disable the `node.master` role (enabled by default).
 <2> The `node.data` role is enabled by default.
 <3> Disable the `node.ingest` role (enabled by default).
 
-[float]
-[[node-ingest-node]]
-=== Ingest Node
+### Ingest Node
 
 Ingest nodes can execute pre-processing pipelines, composed of one or more
 ingest processors. Depending on the type of operations performed by the ingest
@@ -308,19 +294,16 @@ ingest nodes, that will only perform this specific task.
 
 To create a dedicated ingest node, set:
 
-[source,yaml]
--------------------
+```
 node.master: false <1>
 node.data: false <2>
 node.ingest: true <3>
--------------------
+```
 <1> Disable the `node.master` role (enabled by default).
 <2> Disable the `node.data` role (enabled by default).
 <3> The `node.ingest` role is enabled by default.
 
-[float]
-[[coordinating-only-node]]
-=== Coordinating only node 仅协调节点
+### Coordinating only node 仅协调节点
 
 If you take away the ability to be able to handle master duties, to hold data,
 and pre-process documents, then you are left with a _coordinating_ node that
@@ -351,22 +334,18 @@ serve the same purpose.
 
 To create a coordinating only node, set:
 
-[source,yaml]
--------------------
+```
 node.master: false <1>
 node.data: false <2>
 node.ingest: false <3>
--------------------
+```
 <1> Disable the `node.master` role (enabled by default).
 <2> Disable the `node.data` role (enabled by default).
 <3> Disable the `node.ingest` role (enabled by default).
 
-[float]
-== Node data path settings 节点数据路径设置
+#### Node data path settings 节点数据路径设置
 
-[float]
-[[data-path]]
-=== `path.data`
+##### `path.data`
 
 Every data and master-eligible node requires access to a data directory where
 shards and index and cluster metadata will be stored. The `path.data` defaults
@@ -377,19 +356,17 @@ file an absolute path or a path relative to `$ES_HOME` as follows:
 - `path.data` 默认为 `$ES_HOME/data`
 - 但可以在elasticsearch.yml配置文件中配置绝对路径或基于 `$ES_HOME` 的相对路径，如下所示：
 
-[source,yaml]
------------------------
+```
 path.data:  /var/elasticsearch/data
------------------------
+```
 
 Like all node settings, it can also be specified on the command line as:
 
 和所有节点设置一样，他也可以在命令行上通过命令实现:
 
-[source,sh]
------------------------
+```
 ./bin/elasticsearch -Epath.data=/var/elasticsearch/data
------------------------
+```
 
 TIP: When using the `.zip` or `.tar.gz` distributions, the `path.data` setting
 should be configured to locate the data directory outside the Elasticsearch
@@ -400,9 +377,7 @@ your data! The RPM and Debian distributions do this for you already.
 - 以便在Elasticsearch主目录外找到数据目录，以便删除主目录时不会误删数据！
 - RPM和Debian发行版已经为你做了这个。
 
-[float]
-[[max-local-storage-nodes]]
-=== `node.max_local_storage_nodes`
+##### `node.max_local_storage_nodes`
 
 The <<data-path,data path>> can be shared by multiple nodes, even by nodes from different
 clusters. This is very useful for testing failover and different configurations on your development
@@ -425,8 +400,7 @@ lead to unexpected data loss.
 
 警告：不要在同一数据目录运行不同的节点类型（即主数据，数据）。这可能导致意外的数据丢失。
 
-[float]
-== Other node settings
+### Other node settings
 
 More node settings can be found in <<modules,Modules>>.  Of particular note are
 the <<cluster.name,`cluster.name`>>, the <<node.name,`node.name`>> and the
@@ -435,6 +409,7 @@ the <<cluster.name,`cluster.name`>>, the <<node.name,`node.name`>> and the
 更多节点设置可以在 `modules` 中找到。 特别注意的是 `cluster.name` ，`node.name` 和网络设置。
 
 ***
+
 以下为译者注释:
 
 - 【1】 master-node,Master-eligible node
@@ -442,3 +417,13 @@ the <<cluster.name,`cluster.name`>>, the <<node.name,`node.name`>> and the
   - 多个备选主节点可以通过竞主协议或算法来实现主节点的竞选；
   - 某个备选主节点成为主节点后，其他备选主节点依然备选；
   - 一旦发生主节点宕机，其他备选主节点会通过再次选举竞主成为新的主节点
+
+
+***
+参考文献
+[modules_node_asciidoc]: https://github.com/elastic/elasticsearch/blob/2.3/docs/reference/modules/node.asciidoc
+[modules_node_es]: https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-node.html
+[modules_cluster]: https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-cluster.html
+[modules_http]: https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-http.html
+[modules_transport]: https://www.elastic.co/guide/en/elasticsearch/reference/2.3/modules-transport.html
+[transport_client]: https://www.elastic.co/guide/en/elasticsearch/client/java-api/2.3//transport-client.html
