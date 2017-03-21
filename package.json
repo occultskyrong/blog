@@ -7,6 +7,11 @@
   "scripts": {
     "start": "node ./app.js"
   },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
@@ -25,17 +30,17 @@
     "request": "^2.75.0",
     "request-json": "^0.6.1",
     "serve-favicon": "^2.3.0",
-    "webpack": "^1.14.0",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.9",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "json-loader": "^0.5.4",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-latest": "^6.24.0",
+    "eslint": "^3.18.0",
+    "eslint-loader": "^1.6.3",
     "simple-virtual-dom": "^0.1.9",
     "style-loader": "^0.13.1",
-    "virtual-dom": "^2.1.1"
+    "virtual-dom": "^2.1.1",
+    "webpack": "^2.2.1"
   }
 }
