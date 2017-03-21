@@ -1,7 +1,8 @@
 
-## 非版权原作者，感谢 `ElasticSearch` 团队
+## 非版权原作者
 - 原文查看[elasticsearch/docs/reference/modules/node.asciidoc][modules_node_asciidoc]
 - 官方文档地址[Elasticsearch Reference [2.3] » Modules » Node][modules_node_es]
+### 感谢 `ElasticSearch` 团队
 
 ***
 
