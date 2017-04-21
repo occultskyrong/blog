@@ -81,7 +81,7 @@ class OrderFullGiftActivity extends Activity {
 }
 
 // 商品 - 满减活动 - 对象
-class FullCutActivity {
+class FullCutActivity extends Activity{
     constructor(activity_id) {
         super(activity_id);
     }
@@ -91,7 +91,7 @@ class FullCutActivity {
 }
 
 // 商品 - 满赠活动 - 对象
-class FullGiftActivity {
+class FullGiftActivity extends Activity{
     constructor(activity_id) {
         super(activity_id);
     }
