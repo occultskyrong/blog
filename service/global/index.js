@@ -45,8 +45,9 @@ module.exports = {
         logger('http').info('ip:' + this.getCip(req)
             + ';  url:' + req.url
             + ';  method:' + req.method
-            + ";  queries:" + JSON.stringify(req.query)
+            + ";  query:" + JSON.stringify(req.query)
             + ";  body:" + JSON.stringify(req.body)
+            + ";  params:" + JSON.stringify(req.params)
         );
     }
     /**
@@ -70,7 +71,7 @@ module.exports = {
             _['method'] = req.method;
             _['url'] = req.originalUrl;
         }
-        'stack' in err ? _['stack'] = err['stack'] : 0;
+        'stack' in err ? _['stack'] = err['stack'] : false;
         _['status'] = 'status' in err ? err['status'] : status || -1;
         _['msg'] = 'message' in _ && _['message'] || '';
         log4js.log4js.getLogger('ERROR').error(JSON.stringify(_));
