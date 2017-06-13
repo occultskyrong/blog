@@ -16,6 +16,7 @@ class Good {
         this.good_id = good_id;
     }
 
+    // 初始化 - 赋值
     init(good) {
         this.dadou = parseInt(good.dadou);                  // 赠豆
         this.onSale = parseInt(good.onSale);                // 售卖状态
@@ -32,7 +33,7 @@ class Good {
         this.vipPrice = parseFloat(good.vipPrice);          // 会员价格
     }
 
-    // 获取该商品价格
+    // 获取 - 商品销售价格
     getPrice() {
         let _price = 0;
         if (this.onSale === 1) { // 正常销售
