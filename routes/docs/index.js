@@ -12,7 +12,7 @@ router.use('/home', require('./home'));
 
 router.use('/Bootstrap', require('./Bootstrap'));
 
-router.use('/elastic_stack', require('./elastic_stack'));
+router.use('/elastic_stack', require('./Elastic_Stack'));
 
 router.get('/jekyll/Installation', function (req, res) {
     markdown.render(res, null, 'jekyll-installation', './public/docs/jekyll/Installation.md');
