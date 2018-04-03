@@ -1,10 +1,10 @@
 /*!
  * JSHint v0.0.1
- * created by zhangrz@diandainfo
- * Link @https://github.com/diandainfo/dd_web/blob/master/doc/.jshintrc
- * License by MIT @https://github.com/diandainfo/dd_web/blob/master/LICENSE
+ * created by occultskyrong
+ * Link @https://github.com/occultskyrong/blog
+ * License by MIT @https://github.com/occultskyrong/blog/blob/master/LICENSE
  * Stand by JSHint Options @http://jshint.com/docs/options/
- * Copyright 2014-2017 DiandaInfo, Inc.
+ * Copyright 2014-2020 occultskyrong, Inc.
  */
 {
   // 禁用位运算符(^、|、&)
