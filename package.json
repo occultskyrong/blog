@@ -4,6 +4,7 @@
   "private": true,
   "author": "occultskyrong@gmail.com",
   "description": "个人博客",
+  "script": "app.js",
   "scripts": {
     "start": "node ./app.js"
   },
