@@ -10,7 +10,7 @@ var router = require('express').Router();
 // docs - 首页
 router.use('/home', require('./home'));
 
-router.use('/Bootstrap', require('./Bootstrap'));
+router.use('/bootstrap', require('./bootstrap'));
 
 router.use('/elastic_stack', require('./Elastic_Stack'));
 
